@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Build script para o projeto Aulasmv -->
+<project name="Aulasmv" default="default" basedir=".">
+    <description>Build, test, and run the Aulasmv project.</description>
+
+    <!-- Importação do script principal do NetBeans -->
+    <import file="nbproject/build-impl.xml"/>
+
+    <!-- Personalização do processo de build -->
+    <target name="-post-clean">
+        <echo message="Limpeza completa após o build."/>
+    </target>
+
+    <!-- Adicionando um alvo personalizado para rodar o projeto -->
+    <target name="run-custom" depends="jar">
+        <echo message="Executando o projeto..."/>
+        <java jar="${dist.jar}" fork="true"/>
+    </target>
+
+    <!-- Exemplo de alvo de validação -->
+    <target name="validate">
+        <echo message="Validando o ambiente e verificando dependências..."/>
+        <condition property="java.present" value="true" else="false">
+            <isset property="java.home"/>
+        </condition>
+        <fail unless="java.present">
+            Ambiente Java não configurado corretamente. Verifique sua instalação.
+        </fail>
+    </target>
+</project>

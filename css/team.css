@@ -1,0 +1,96 @@
+
+/*********************team****************/
+/********** Estilo da Equipe **********/
+.center_team {
+    background-image: url(../img/24.jpg);
+    background-position: center;
+    background-size: contain;
+  }
+  
+  .team_1m1i1 ul li a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    transition: all 0.3s ease;
+  }
+  
+  .team_1m1i1 ul li a:hover {
+    background: #54be73 !important;
+    color: #fff !important;
+  }
+  
+  .team_1m1i1 {
+    padding-top: 45%;
+    display: none;
+  }
+  
+  .team_1m:hover .team_1m1i1 {
+    display: block;
+  }
+  
+  .center_team_dt {
+    background-image: url(../img/25.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  /********** Estilo Detalhes **********/
+  .team_dt1r .nav-tabs {
+    border-color: #dbf7e3;
+  }
+  
+  .team_dt1r .nav-tabs .nav-link {
+    font-weight: bold;
+    padding: 15px 30px;
+    color: #333;
+    border-color: #dbf7e3 #dbf7e3 #fff;
+    border-radius: 30px 30px 0 0;
+    transition: all 0.3s ease;
+  }
+  
+  .team_dt1r .nav-tabs .nav-link.active {
+    border-color: #54be73;
+    color: #fff;
+    background: #54be73;
+  }
+  
+  /********** Responsividade **********/
+  @media screen and (max-width: 767px) {
+    .team_1m {
+      margin: 8px 0;
+    }
+  
+    .team_1m p {
+      text-align: left;
+    }
+  
+    .team_dt1r {
+      margin-top: 15px;
+    }
+  
+    .profile_i h6 {
+      text-align: center;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 991px) {
+    .team_1m2 h4 {
+      font-size: 22px;
+    }
+  
+    .team_dt1r .nav-tabs .nav-link {
+      padding: 15px 20px;
+    }
+  }
+  
+  /********** Espaço para ajustes futuros **********/
+  @media (min-width: 992px) and (max-width: 1200px) {
+    /* Estilos específicos para telas médias-grandes */
+  }
+  
+  @media (min-width: 1201px) and (max-width: 1300px) {
+    /* Estilos específicos para telas maiores */
+  }
+
+
+

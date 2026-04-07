@@ -1,0 +1,121 @@
+/********************* Blog Styling *********************/
+
+.center_blog {
+    background-image: url('../img/240_F_681891620_xzSk2DY7TLMuCMwBrJKjpJ7cP2BTvaD2.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.blog_1l1ir ul li a,
+.blog_1r1 ul li a {
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.blog_1l1ir ul li a {
+    background-color: #54be73;
+    color: #fff;
+}
+
+.blog_1r1 ul li a {
+    background: #f9f9f9;
+    margin: 3px 2px;
+}
+
+.blog_1r1 ul li a:hover {
+    background-color: #54be73;
+    color: #fff;
+}
+
+.center_blog_dt {
+    background: url('../img/240_F_457332892_mBgXsl3lucFsMcyc4sIetTDuFQGchF9a.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.blog_1dt1i {
+    border-left: 3px solid #54be73;
+}
+
+.tags a,
+.social_tag a {
+    padding: 5px 10px;
+    background: #fff;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 3px 2px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tags a:hover,
+.social_tag a:hover {
+    background-color: #54be73;
+    color: #fff;
+}
+
+.social_tag a i {
+    color: #111;
+}
+
+.blog_1l1il .button_2 {
+    padding: 0 30px;
+}
+
+/********************* Responsive Design *********************/
+
+@media screen and (max-width: 767px) {
+    .blog_1l1ir, .blog_1l1il, .blog_1r1 h4, .blog_1dt3 h3, .blog_1dt2il {
+        text-align: center !important;
+    }
+
+    .blog_1r {
+        margin-top: 15px;
+    }
+
+    .list_1dt2i img {
+        margin-top: 10px;
+    }
+
+    .blog_1dt2il {
+        margin-bottom: 15px;
+    }
+
+    .blog_1dt3il {
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    /* Espaço reservado para ajustes específicos */
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .blog_1l1il .button_2 {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+
+    .blog_1r1 h6 {
+        font-size: 13px;
+    }
+
+    .blog_1dt2il span {
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        font-size: 30px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .blog_1l1il .button_2 {
+        padding: 0 20px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1300px) {
+    /* Espaço reservado para ajustes específicos */
+}
+
+/********************* Blog Styling End *********************/

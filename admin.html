@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Renoverde - Painel Admin para Gestão de Conteúdo">
+  <title>Painel Admin - Renoverde</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1a6b3a;
+      --green-light: #2d9b57;
+      --green-pale: #eaf5ee;
+      --black: #0d1a12;
+      --off-white: #f7faf8;
+      --gray: #6b7a70;
+      --red: #dc3545;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background: white;
+      padding: 1.5rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--green-light);
+    }
+
+    .btn-secondary {
+      background: var(--gray);
+      color: white;
+    }
+
+    .btn-danger {
+      background: var(--red);
+      color: white;
+    }
+
+    .btn-small {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 0;
+      min-height: calc(100vh - 70px);
+    }
+
+    /* Sidebar */
+    aside {
+      background: white;
+      border-right: 1px solid #e0e0e0;
+      padding: 2rem 0;
+      position: sticky;
+      top: 70px;
+      height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      color: var(--gray);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav a.active {
+      background: var(--green-pale);
+      color: var(--green);
+      border-left-color: var(--green);
+    }
+
+    /* Main Content */
+    main {
+      padding: 2rem;
+      background: var(--off-white);
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+
+    .page {
+      display: none;
+    }
+
+    .page.active {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Page Header */
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+
+    .page-intro {
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--black);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(26, 107, 58, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    th {
+      background: var(--green-pale);
+      color: var(--green);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    tr:hover {
+      background: #fafafa;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+
+    .card h2 {
+      font-family: 'Syne', sans-serif;
+      margin-bottom: 1.5rem;
+      color: var(--black);
+    }
+
+    /* Alerts */
+    .alert {
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      animation: slideUp 0.3s;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alert-success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    .alert-error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    .alert-info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--gray);
+    }
+
+    /* Utility */
+    .mt-2 { margin-top: 1rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .text-center { text-align: center; }
+    .text-muted { color: var(--gray); }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .badge-success {
+      background: var(--green-pale);
+      color: var(--green);
+    }
+
+    .badge-danger {
+      background: #f8d7da;
+      color: var(--red);
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--green-pale);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      aside {
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        height: auto;
+        position: static;
+        padding: 1rem 0;
+      }
+
+      nav ul {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        flex: 1;
+        text-align: center;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+      }
+
+      nav a:hover, nav a.active {
+        border-left: none;
+        border-bottom-color: var(--green);
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">🌱 Renoverde Admin</div>
+        <div class="header-actions">
+          <button class="btn btn-secondary btn-small">👤 Perfil</button>
+          <button class="btn btn-danger btn-small" onclick="logout()">Sair</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Layout -->
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside>
+      <nav>
+        <ul>
+          <li><a href="#" onclick="navigateTo('dashboard')" class="nav-link active">📊 Dashboard</a></li>
+          <li><a href="#" onclick="navigateTo('blog')" class="nav-link">📝 Blog</a></li>
+          <li><a href="#" onclick="navigateTo('services')" class="nav-link">🔧 Serviços</a></li>
+          <li><a href="#" onclick="navigateTo('team')" class="nav-link">👥 Equipa</a></li>
+          <li><a href="#" onclick="navigateTo('faq')" class="nav-link">❓ FAQ</a></li>
+          <li><a href="#" onclick="navigateTo('contacts')" class="nav-link">✉️ Contactos</a></li>
+          <li><a href="#" onclick="navigateTo('newsletter')" class="nav-link">📧 Newsletter</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Dashboard -->
+      <div id="dashboard" class="page active">
+        <h1>Dashboard</h1>
+        <p class="page-intro">Bem-vindo ao painel de administração da Renoverde</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="card" style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📝</div>
+            <h3 style="font-size: 0.9rem; color: var(--gray); margin-bottom: 0.5rem;">Artigos do Blog</h3>
+            <div style="font-size: 2rem; font-weight: bold; color: var(--green);" id="blogCount">-</div>
+          </div>
+          <div class="card" style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔧</div>
+            <h3 style="font-size: 0.9rem; color: var(--gray); margin-bottom: 0.5rem;">Serviços</h3>
+            <div style="font-size: 2rem; font-weight: bold; color: var(--green);" id="servicesCount">-</div>
+          </div>
+          <div class="card" style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✉️</div>
+            <h3 style="font-size: 0.9rem; color: var(--gray); margin-bottom: 0.5rem;">Mensagens</h3>
+            <div style="font-size: 2rem; font-weight: bold; color: var(--green);" id="contactsCount">-</div>
+          </div>
+          <div class="card" style="padding: 1.5rem;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📧</div>
+            <h3 style="font-size: 0.9rem; color: var(--gray); margin-bottom: 0.5rem;">Subscribers</h3>
+            <div style="font-size: 2rem; font-weight: bold; color: var(--green);" id="subscribersCount">-</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Início Rápido</h2>
+          <p class="text-muted">Selecione uma opção no menu lateral para começar a gerenciar o site.</p>
+          <ul style="list-style: none; margin-top: 1rem;">
+            <li style="margin-bottom: 0.5rem;"><a href="#" onclick="navigateTo('blog')" style="color: var(--green); text-decoration: none;">➕ Novo Artigo</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#" onclick="navigateTo('services')" style="color: var(--green); text-decoration: none;">➕ Novo Serviço</a></li>
+            <li style="margin-bottom: 0.5rem;"><a href="#" onclick="navigateTo('contacts')" style="color: var(--green); text-decoration: none;">✉️ Ver Mensagens</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Blog Management -->
+      <div id="blog" class="page">
+        <h1>Gerenciar Blog</h1>
+        <p class="page-intro">Crie e edite artigos do blog</p>
+        
+        <div class="card">
+          <button class="btn btn-primary" onclick="openBlogModal()">+ Novo Artigo</button>
+          <div id="blogList" style="margin-top: 1.5rem;"></div>
+        </div>
+      </div>
+
+      <!-- Services Management -->
+      <div id="services" class="page">
+        <h1>Gerenciar Serviços</h1>
+        <p class="page-intro">Crie e edite os seus serviços</p>
+        
+        <div class="card">
+          <button class="btn btn-primary" onclick="openServiceModal()">+ Novo Serviço</button>
+          <div id="servicesList" style="margin-top: 1.5rem;"></div>
+        </div>
+      </div>
+
+      <!-- Team Management -->
+      <div id="team" class="page">
+        <h1>Gerenciar Equipa</h1>
+        <p class="page-intro">Adicione e edite membros da equipa</p>
+        
+        <div class="card">
+          <button class="btn btn-primary" onclick="openTeamModal()">+ Novo Membro</button>
+          <div id="teamList" style="margin-top: 1.5rem;"></div>
+        </div>
+      </div>
+
+      <!-- FAQ Management -->
+      <div id="faq" class="page">
+        <h1>Perguntas Frequentes</h1>
+        <p class="page-intro">Crie e edite FAQs</p>
+        
+        <div class="card">
+          <button class="btn btn-primary" onclick="openFAQModal()">+ Nova Pergunta</button>
+          <div id="faqList" style="margin-top: 1.5rem;"></div>
+        </div>
+      </div>
+
+      <!-- Contacts -->
+      <div id="contacts" class="page">
+        <h1>Mensagens Recebidas</h1>
+        <p class="page-intro">Veja todas as mensagens de contato</p>
+        
+        <div class="card">
+          <div id="contactsList"></div>
+        </div>
+      </div>
+
+      <!-- Newsletter -->
+      <div id="newsletter" class="page">
+        <h1>Gestão da Newsletter</h1>
+        <p class="page-intro">Veja esta inscrições e gerencie subscribers</p>
+        
+        <div class="card">
+          <div id="subscribersList"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const API_BASE_URL = 'http://localhost:5001/api';
+    let currentPage = 'dashboard';
+
+    // Navigation
+    function navigateTo(page) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(page).classList.add('active');
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+      currentPage = page;
+    }
+
+    // API calls
+    async function apiCall(endpoint, options = {}) {
+      try {
+        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+          headers: { 'Content-Type': 'application/json', ...options.headers },
+          ...options,
+        });
+        if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
+        return await response.json();
+      } catch (error) {
+        console.error('API Error:', error);
+        showAlert('Erro ao comunicar com servidor', 'error');
+        throw error;
+      }
+    }
+
+    // UI Helpers
+    function showAlert(message, type = 'success') {
+      const alert = document.createElement('div');
+      alert.className = `alert alert-${type}`;
+      alert.textContent = message;
+      document.body.insertBefore(alert, document.querySelector('main'));
+      setTimeout(() => alert.remove(), 3000);
+    }
+
+    function logout() {
+      if (confirm('Tem certeza que deseja sair?')) {
+        localStorage.removeItem('token');
+        window.location.href = 'index.html';
+      }
+    }
+
+    // Load initial data
+    async function loadDashboardData() {
+      try {
+        const [blogs, services, contacts, subscribers] = await Promise.all([
+          apiCall('/blog/posts'),
+          apiCall('/servicos'),
+          apiCall('/contatos'),
+          apiCall('/newsletter/subscribers'),
+        ]);
+
+        document.getElementById('blogCount').textContent = blogs.data ? blogs.data.length : 0;
+        document.getElementById('servicesCount').textContent = services.data ? services.data.length : 0;
+        document.getElementById('contactsCount').textContent = contacts.data ? contacts.data.length : 0;
+        document.getElementById('subscribersCount').textContent = subscribers.data ? subscribers.data.length : 0;
+      } catch (error) {
+        console.error('Error loading dashboard:', error);
+      }
+    }
+
+    // Stub functions for modals
+    function openBlogModal() { showAlert('Funcionalidade de criar artigo em desenvolvimento', 'info'); }
+    function openServiceModal() { showAlert('Funcionalidade de criar serviço em desenvolvimento', 'info'); }
+    function openTeamModal() { showAlert('Funcionalidade de gerenciar equipa em desenvolvimento', 'info'); }
+    function openFAQModal() { showAlert('Funcionalidade de criar FAQ em desenvolvimento', 'info'); }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadDashboardData);
+  </script>
+</body>
+</html>

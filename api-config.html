@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renoverde - API Configuration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2d8b4b 0%, #1a5a32 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #2d8b4b;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d8b4b;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .option {
+            margin-bottom: 12px;
+        }
+
+        .radio-wrapper {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+            accent-color: #2d8b4b;
+        }
+
+        label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .option-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .option-desc {
+            font-size: 12px;
+            color: #999;
+            margin-left: 28px;
+        }
+
+        .custom-section {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .custom-section.active {
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-top: 8px;
+            font-family: 'Courier New', monospace;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #2d8b4b;
+            box-shadow: 0 0 4px rgba(45, 139, 75, 0.2);
+        }
+
+        .helper-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-save {
+            background: #2d8b4b;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #1a5a32;
+        }
+
+        .btn-reset {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-reset:hover {
+            background: #e0e0e0;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 13px;
+            display: none;
+        }
+
+        .status.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.info {
+            display: block;
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .code-example {
+            background: #f8f8f8;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #333;
+            margin-top: 8px;
+            word-break: break-all;
+            border-left: 3px solid #2d8b4b;
+        }
+
+        .current-config {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            border-left: 3px solid #2d8b4b;
+        }
+
+        .current-config h3 {
+            font-size: 12px;
+            color: #2d8b4b;
+            font-weight: 600;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .current-url {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .test-button {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 8px 16px;
+            background: #2d8b4b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .test-button:hover {
+            background: #1a5a32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🌱</div>
+            <h1>Renoverde Testing</h1>
+            <p class="subtitle">API Configuration</p>
+        </div>
+
+        <form id="configForm">
+            <div class="section">
+                <div class="section-title">Connect To Backend</div>
+
+                <div class="option">
+                    <div class="radio-wrapper">
+                        <input type="radio" id="localhost" name="apiMode" value="localhost" checked>
+                        <label for="localhost">
+                            <span class="option-label">Local Development</span>
+                            <span class="option-desc">Backend running on your computer (http://localhost:5001)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="option">
+                    <div class="radio-wrapper">
+                        <input type="radio" id="ngrok" name="apiMode" value="ngrok">
+                        <label for="ngrok">
+                            <span class="option-label">Remote (ngrok Tunnel)</span>
+                            <span class="option-desc">Public URL for remote access</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="custom-section" id="ngrokSection">
+                    <label for="ngrokUrl">Paste your ngrok URL here:</label>
+                    <input type="text" id="ngrokUrl" placeholder="https://abc123def456.ngrok.io" />
+                    <div class="helper-text">
+                        📌 Get this from ngrok tunnel window<br>
+                        Example: https://abc123def456.ngrok.io
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="btn-save">✅ Save & Test</button>
+                <button type="button" class="btn-reset" onclick="resetConfig()">↶ Reset</button>
+            </div>
+
+            <div class="status" id="status"></div>
+
+            <div class="current-config">
+                <h3>Current Configuration</h3>
+                <div class="current-url" id="currentUrl">http://localhost:5001/api</div>
+                <a href="index.html" class="test-button">🚀 Open Website</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Initialize form
+        document.getElementById('apiMode').addEventListener('change', toggleNgrokInput);
+        document.getElementById('ngrok').addEventListener('change', toggleNgrokInput);
+        document.getElementById('configForm').addEventListener('submit', saveConfig);
+
+        function toggleNgrokInput() {
+            const ngrokSection = document.getElementById('ngrokSection');
+            const isNgrok = document.getElementById('ngrok').checked;
+            ngrokSection.classList.toggle('active', isNgrok);
+
+            if (isNgrok) {
+                const savedUrl = sessionStorage.getItem('ngrok_url');
+                if (savedUrl) {
+                    document.getElementById('ngrokUrl').value = savedUrl;
+                }
+            }
+        }
+
+        function saveConfig(e) {
+            e.preventDefault();
+
+            const apiMode = document.querySelector('input[name="apiMode"]:checked').value;
+            const status = document.getElementById('status');
+            let apiUrl;
+
+            if (apiMode === 'ngrok') {
+                apiUrl = document.getElementById('ngrokUrl').value.trim();
+
+                if (!apiUrl) {
+                    showStatus('❌ Please enter your ngrok URL!', 'error');
+                    return;
+                }
+
+                if (!apiUrl.startsWith('https://')) {
+                    showStatus('❌ ngrok URL must start with https://', 'error');
+                    return;
+                }
+
+                // Remove trailing slash if present
+                apiUrl = apiUrl.replace(/\/$/, '');
+
+                sessionStorage.setItem('ngrok_url', apiUrl);
+                showStatus(`✅ Configured for ngrok tunnel!<br><code>${apiUrl}/api</code>`, 'success');
+            } else {
+                sessionStorage.removeItem('ngrok_url');
+                apiUrl = 'http://localhost:5001';
+                showStatus('✅ Configured for local development!', 'success');
+            }
+
+            // Update current URL display
+            document.getElementById('currentUrl').textContent = apiUrl + '/api';
+
+            // Test connection
+            testConnection(apiUrl);
+        }
+
+        function testConnection(baseUrl) {
+            fetch(`${baseUrl}/api/health`)
+                .then(response => {
+                    if (response.ok) {
+                        showStatus('✅ Connection successful! Backend is reachable.<br>Ready to test the website →', 'success');
+                    } else {
+                        showStatus('⚠️ Backend responded but with an error. Check backend status.', 'info');
+                    }
+                })
+                .catch(error => {
+                    showStatus(`⚠️ Cannot reach backend at ${baseUrl}<br>Make sure backend is running!`, 'info');
+                });
+        }
+
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.className = `status ${type}`;
+            status.innerHTML = message;
+            setTimeout(() => {
+                status.style.display = status.className === 'status' ? 'none' : 'block';
+            }, 6000);
+        }
+
+        function resetConfig() {
+            sessionStorage.removeItem('ngrok_url');
+            document.getElementById('localhost').checked = true;
+            document.getElementById('ngrokUrl').value = '';
+            document.getElementById('ngrokSection').classList.remove('active');
+            document.getElementById('currentUrl').textContent = 'http://localhost:5001/api';
+            showStatus('✅ Configuration reset to local development', 'success');
+        }
+
+        // Load saved config on page load
+        window.addEventListener('load', () => {
+            const savedUrl = sessionStorage.getItem('ngrok_url');
+            if (savedUrl) {
+                document.getElementById('ngrok').checked = true;
+                document.getElementById('ngrokUrl').value = savedUrl;
+                document.getElementById('ngrokSection').classList.add('active');
+                document.getElementById('currentUrl').textContent = savedUrl + '/api';
+            }
+        });
+    </script>
+</body>
+</html>
