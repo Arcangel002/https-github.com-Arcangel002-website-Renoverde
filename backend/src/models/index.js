@@ -198,6 +198,62 @@ export const Service = sequelize.define('Service', {
   timestamps: true,
 });
 
+export const Product = sequelize.define('Product', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  titulo: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  descricao: {
+    type: DataTypes.TEXT,
+  },
+  imagem: {
+    type: DataTypes.STRING,
+  },
+  preco: {
+    type: DataTypes.DECIMAL(10, 2),
+  },
+  ativo: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
+}, {
+  tableName: 'products',
+  timestamps: true,
+});
+
+export const Launch = sequelize.define('Launch', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  titulo: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  descricao: {
+    type: DataTypes.TEXT,
+  },
+  imagem: {
+    type: DataTypes.STRING,
+  },
+  data_lancamento: {
+    type: DataTypes.DATE,
+  },
+  ativo: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
+}, {
+  tableName: 'launches',
+  timestamps: true,
+});
+
 export const TeamMember = sequelize.define('TeamMember', {
   id: {
     type: DataTypes.INTEGER,
@@ -299,6 +355,8 @@ export default {
   BlogCategory,
   BlogComment,
   Service,
+  Product,
+  Launch,
   TeamMember,
   FAQ,
   NewsletterSubscriber,

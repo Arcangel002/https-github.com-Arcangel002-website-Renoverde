@@ -1,0 +1,158 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "mission": "Mission",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "schedule": "Schedule Collection"
+  },
+  "topbar": {
+    "welcome": "Welcome to Renoverde!",
+    "findUs": "How to find us",
+    "feedback": "Give feedback"
+  },
+  "hero": {
+    "tag": "Sustainable Recycling",
+    "title": "Transforming Plastic into Sustainable Future",
+    "subtitle": "We are a plastic recycling company in Guinea-Bissau, dedicated to creating a more sustainable future through the transformation of plastic waste into useful products.",
+    "cta": "Learn More",    "secondary": "View Services",    "stats": {
+      "plastic": "Tons of Plastic Recycled",
+      "products": "Products Created",
+      "communities": "Communities Helped"
+    }
+  },
+  "about": {
+    "label": "About Us",
+    "title": "Who We Are",
+    "subtitle": "Renoverde is a leading plastic recycling company in Guinea-Bissau, committed to environmental sustainability and community development.",
+    "stats": {
+      "recycled": "Tons Recycled",
+      "products": "Products Created",
+      "jobs": "Jobs Created"
+    }
+  },
+  "services": {
+    "label": "Our Services",
+    "title": "What We Offer",
+    "subtitle": "We offer a complete range of plastic recycling and transformation services to meet your community's needs.",
+    "items": {
+      "collection": {
+        "title": "Plastic Collection",
+        "desc": "Door-to-door plastic waste collection service throughout Guinea-Bissau."
+      },
+      "recycling": {
+        "title": "Processing",
+        "desc": "Advanced transformation of recycled plastic into high-quality raw materials."
+      },
+      "products": {
+        "title": "Sustainable Products",
+        "desc": "Creation of ecological and durable products for domestic and commercial use."
+      }
+    },
+    "cta": "Request Service"
+  },
+  "mission": {
+    "label": "Our Mission",
+    "title": "Why We Exist",
+    "subtitle": "Our mission is to combat plastic pollution in Guinea-Bissau through innovative recycling and environmental education.",
+    "vision": {
+      "title": "Vision",
+      "content": "To be the leading sustainable recycling company in West Africa, creating a future without disposable plastic."
+    },
+    "values": {
+      "title": "Values",
+      "content": "Sustainability, Innovation, Transparency and Community Development guide all our actions."
+    }
+  },
+  "schedule": {
+    "label": "Scheduling",
+    "title": "Schedule Your Collection",
+    "subtitle": "We make recycling easy. Schedule a convenient collection and contribute to a cleaner Guinea-Bissau.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email",
+      "phone": "Phone",
+      "wasteType": "Waste Type",
+      "wasteTypes": {
+        "plastic": "Plastic",
+        "paper": "Paper",
+        "glass": "Glass",
+        "metal": "Metal",
+        "other": "Other"
+      },
+      "date": "Preferred Date",
+      "time": "Preferred Time",
+      "message": "Additional Message",
+      "submit": "Schedule Collection"
+    }
+  },
+  "faq": {
+    "label": "Frequently Asked Questions",
+    "title": "Common Questions",
+    "subtitle": "Find answers to the most frequently asked questions about our recycling services.",
+    "viewAll": "View All Questions",
+    "questions": {
+      "q1": "How does the recycling process work?",
+      "a1": "We collect plastic, sort by type, wash, shred and transform it into raw material for new products.",
+      "q2": "What types of plastic do you accept?",
+      "a2": "We accept PET, HDPE, PVC, LDPE, PP, PS and other common thermoplastics.",
+      "q3": "How to schedule a collection?",
+      "a3": "Use our online form or call directly. We offer door-to-door collection.",
+      "q4": "How much does the service cost?",
+      "a4": "For individuals, the service is free. For companies, we offer competitive prices.",
+      "q5": "How can I help beyond recycling?",
+      "a5": "Educate others about recycling, participate in our awareness campaigns and donate to environmental projects."
+    }
+  },
+  "testimonials": {
+    "label": "Testimonials",
+    "title": "What Our Clients Say",
+    "subtitle": "See how we help communities and companies in Guinea-Bissau achieve their sustainability goals."
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "News and Articles",
+    "subtitle": "Stay informed about recycling, sustainability and our initiatives in Guinea-Bissau.",
+    "readMore": "Read More",
+    "viewAll": "View All Articles"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Get in Touch",
+    "subtitle": "Ready to start your recycling journey? Contact us today.",
+    "newsletter": {
+      "title": "Subscribe to Our Newsletter",
+      "subtitle": "Receive updates about our environmental initiatives and recycling tips.",
+      "placeholder": "Your email",
+      "submit": "Subscribe"
+    }
+  },
+  "footer": {
+    "about": "About Renoverde",
+    "aboutText": "Leading plastic recycling company in Guinea-Bissau, dedicated to environmental sustainability.",
+    "navigationTitle": "Navigation",
+    "servicesTitle": "Services",
+    "newsTitle": "Recent News",
+    "links": {
+      "services": "Services",
+      "about": "About Us",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Sitech e Safim, Bairro Luanda, Bissau, Guinea-Bissau",
+      "email": "renoverdereciclagem@gmail.com",
+      "phone": "+245 XXX XXX XXX"
+    },
+    "newsletter": "Newsletter",
+    "copyright": "© 2026 Renoverde. All rights reserved."
+  },
+  "languages": {
+    "pt": "Português",
+    "en": "English",
+    "fr": "Français"
+  }
+}

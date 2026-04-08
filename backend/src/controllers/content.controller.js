@@ -1,4 +1,4 @@
-import { Service, FAQ, TeamMember, NewsletterSubscriber } from '../models/index.js';
+import { Service, Product, Launch, FAQ, TeamMember, NewsletterSubscriber } from '../models/index.js';
 import { asyncHandler, ApiError } from '../middleware/errorHandler.js';
 
 // ═══════════════════════════════════════════════
@@ -92,8 +92,184 @@ export const deleteService = asyncHandler(async (req, res) => {
   });
 });
 
+// ═══════════════════════════════════════════════// PRODUCTS
 // ═══════════════════════════════════════════════
-// FAQ
+
+export const getProducts = asyncHandler(async (req, res) => {
+  const products = await Product.findAll({
+    where: { ativo: true },
+    order: [['createdAt', 'DESC']],
+  });
+
+  res.json({
+    success: true,
+    data: products,
+  });
+});
+
+export const getProductById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const product = await Product.findByPk(id);
+  if (!product) {
+    throw new ApiError(404, 'Produto não encontrado');
+  }
+
+  res.json({
+    success: true,
+    data: product,
+  });
+});
+
+export const createProduct = asyncHandler(async (req, res) => {
+  const { titulo, descricao, imagem, preco } = req.body;
+
+  const product = await Product.create({
+    titulo,
+    descricao,
+    imagem,
+    preco,
+  });
+
+  res.status(201).json({
+    success: true,
+    message: 'Produto criado com sucesso',
+    data: product,
+  });
+});
+
+export const updateProduct = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { titulo, descricao, imagem, preco, ativo } = req.body;
+
+  const product = await Product.findByPk(id);
+  if (!product) {
+    throw new ApiError(404, 'Produto não encontrado');
+  }
+
+  Object.assign(product, {
+    titulo,
+    descricao,
+    imagem,
+    preco,
+    ativo,
+  });
+
+  await product.save();
+
+  res.json({
+    success: true,
+    message: 'Produto atualizado com sucesso',
+    data: product,
+  });
+});
+
+export const deleteProduct = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const product = await Product.findByPk(id);
+  if (!product) {
+    throw new ApiError(404, 'Produto não encontrado');
+  }
+
+  await product.destroy();
+
+  res.json({
+    success: true,
+    message: 'Produto removido com sucesso',
+  });
+});
+
+// ═══════════════════════════════════════════════
+// LAUNCHES
+// ═══════════════════════════════════════════════
+
+export const getLaunches = asyncHandler(async (req, res) => {
+  const launches = await Launch.findAll({
+    where: { ativo: true },
+    order: [['data_lancamento', 'DESC']],
+  });
+
+  res.json({
+    success: true,
+    data: launches,
+  });
+});
+
+export const getLaunchById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const launch = await Launch.findByPk(id);
+  if (!launch) {
+    throw new ApiError(404, 'Lançamento não encontrado');
+  }
+
+  res.json({
+    success: true,
+    data: launch,
+  });
+});
+
+export const createLaunch = asyncHandler(async (req, res) => {
+  const { titulo, descricao, imagem, data_lancamento } = req.body;
+
+  const launch = await Launch.create({
+    titulo,
+    descricao,
+    imagem,
+    data_lancamento,
+  });
+
+  res.status(201).json({
+    success: true,
+    message: 'Lançamento criado com sucesso',
+    data: launch,
+  });
+});
+
+export const updateLaunch = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+  const { titulo, descricao, imagem, data_lancamento, ativo } = req.body;
+
+  const launch = await Launch.findByPk(id);
+  if (!launch) {
+    throw new ApiError(404, 'Lançamento não encontrado');
+  }
+
+  Object.assign(launch, {
+    titulo,
+    descricao,
+    imagem,
+    data_lancamento,
+    ativo,
+  });
+
+  await launch.save();
+
+  res.json({
+    success: true,
+    message: 'Lançamento atualizado com sucesso',
+    data: launch,
+  });
+});
+
+export const deleteLaunch = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  const launch = await Launch.findByPk(id);
+  if (!launch) {
+    throw new ApiError(404, 'Lançamento não encontrado');
+  }
+
+  await launch.destroy();
+
+  res.json({
+    success: true,
+    message: 'Lançamento removido com sucesso',
+  });
+});
+
+// ═══════════════════════════════════════════════// FAQ
 // ═══════════════════════════════════════════════
 
 export const getFAQs = asyncHandler(async (req, res) => {

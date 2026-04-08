@@ -19,53 +19,35 @@ text-decoration:none;
 color: #54be73;
  }
 
-.button{
-background:#54be73; 
+.button,
+.button_1,
+.button_2 {
+background:#54be73;
 border:1px solid #54be73;
 color:#fff!important;
 display: inline-block;
 transition: 0.3s;
 padding: 17px 45px 17px 45px;
 border-radius:30px;
- }
+}
 
-.button:hover{
-background:#fff!important; 
+.button:hover,
+.button_1:hover {
+background:#fff!important;
 color:#111!important;
 border:1px solid #fff;
- }
+}
 
-.button_1{
-background:#54be73; 
-border:1px solid #54be73;
+.button_2:hover {
+background:#54be73!important;
 color:#fff!important;
-display: inline-block;
-transition: 0.3s;
-padding: 17px 45px 17px 45px;
-border-radius:30px;
- }
-
-.button_1:hover{
-background:#fff!important; 
-color:#111!important;
 border:1px solid #54be73;
- }
- 
-.button_2{
-background:#111; 
+}
+
+.button_2 {
+background:#111;
 border:1px solid #111;
-color:#fff!important;
-display: inline-block;
-transition: 0.3s;
-padding: 17px 45px 17px 45px;
-border-radius:30px;
- }
-
-.button_2:hover{
-background:#54be73!important; 
-color:#fff!important;
-border:1px solid #54be73;
- }
+}
 
 .grid figure {
 position: relative;
@@ -96,50 +78,20 @@ background: #54be73!important;
 .bg_back{
 background:#000000a6;
 }
-h1{
-font-size:60px; 
- }
-h2{
-font-size:50px; 
- }
-h3{
-font-size:40px; 
- }
-h4{
-font-size:30px; 
- }
-h1,h2,h3,h4{
+h1,h2,h3,h4,h5{
 font-family: 'Abril Fatface', serif;
 letter-spacing: 2px;
- }
-h1,h2,h3,h4,h5{
 font-weight:bold;
- }
+}
+
+h1{font-size:60px;}
+h2{font-size:50px;}
+h3{font-size:40px;}
+h4{font-size:30px;}
 hr{
 opacity:1;
 background-color:#dbf7e3; 
- }
-.font_14{
-font-size:14px; 
- }
-.font_8{
-font-size:8px; 
- }
-.font_10{
-font-size:10px; 
- }
-.font_12{
-font-size:12px; 
- }
-.font_13{
-font-size:13px; 
- }
-.font_60{
-font-size:60px!important; 
- }
-.font_50{
-font-size:50px!important; 
- }
+}
 .line {
 height:4px!important;
 width: 80px;

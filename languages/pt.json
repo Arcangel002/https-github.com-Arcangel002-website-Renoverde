@@ -1,0 +1,160 @@
+{
+  "nav": {
+    "home": "Casa",
+    "about": "Sobre nós",
+    "services": "Serviços",
+    "mission": "Missão",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "schedule": "Agendar Recolha"
+  },
+  "topbar": {
+    "welcome": "Bem-vindo à Renoverde!",
+    "findUs": "Como nos encontrar",
+    "feedback": "Dê feedback"
+  },
+  "hero": {
+    "tag": "Reciclagem Sustentável",
+    "title": "Transformando Plástico em Futuro Sustentável",
+    "subtitle": "Somos uma empresa de reciclagem de plástico em Guiné-Bissau, dedicada a criar um futuro mais sustentável através da transformação de resíduos plásticos em produtos úteis.",
+    "cta": "Saiba Mais",
+    "secondary": "Ver Serviços",
+    "stats": {
+      "plastic": "Toneladas de Plástico Reciclado",
+      "products": "Produtos Criados",
+      "communities": "Comunidades Ajudadas"
+    }
+  },
+  "about": {
+    "label": "Sobre Nós",
+    "title": "Quem Somos",
+    "subtitle": "A Renoverde é uma empresa líder em reciclagem de plástico em Guiné-Bissau, comprometida com a sustentabilidade ambiental e o desenvolvimento comunitário.",
+    "stats": {
+      "recycled": "Toneladas Recicladas",
+      "products": "Produtos Criados",
+      "jobs": "Empregos Criados"
+    }
+  },
+  "services": {
+    "label": "Nossos Serviços",
+    "title": "O Que Oferecemos",
+    "subtitle": "Oferecemos uma gama completa de serviços de reciclagem e transformação de plástico para atender às necessidades da sua comunidade.",
+    "items": {
+      "collection": {
+        "title": "Recolha de Plástico",
+        "desc": "Serviço de recolha porta-a-porta de resíduos plásticos em toda Guiné-Bissau."
+      },
+      "recycling": {
+        "title": "Processamento",
+        "desc": "Transformação avançada de plástico reciclado em matéria-prima de alta qualidade."
+      },
+      "products": {
+        "title": "Produtos Sustentáveis",
+        "desc": "Criação de produtos ecológicos e duráveis para uso doméstico e comercial."
+      }
+    },
+    "cta": "Solicitar Serviço"
+  },
+  "mission": {
+    "label": "Nossa Missão",
+    "title": "Por Que Existimos",
+    "subtitle": "Nossa missão é combater a poluição plástica em Guiné-Bissau através da reciclagem inovadora e educação ambiental.",
+    "vision": {
+      "title": "Visão",
+      "content": "Ser a empresa líder em reciclagem sustentável na África Ocidental, criando um futuro sem plástico descartável."
+    },
+    "values": {
+      "title": "Valores",
+      "content": "Sustentabilidade, Inovação, Transparência e Desenvolvimento Comunitário guiam todas as nossas ações."
+    }
+  },
+  "schedule": {
+    "label": "Agendamento",
+    "title": "Agende Sua Recolha",
+    "subtitle": "Facilitamos a reciclagem. Agende uma recolha conveniente e contribua para um Guiné-Bissau mais limpo.",
+    "form": {
+      "name": "Nome Completo",
+      "email": "Email",
+      "phone": "Telefone",
+      "wasteType": "Tipo de Resíduo",
+      "wasteTypes": {
+        "plastic": "Plástico",
+        "paper": "Papel",
+        "glass": "Vidro",
+        "metal": "Metal",
+        "other": "Outro"
+      },
+      "date": "Data Preferida",
+      "time": "Horário Preferido",
+      "message": "Mensagem Adicional",
+      "submit": "Agendar Recolha"
+    }
+  },
+  "faq": {
+    "label": "Perguntas Frequentes",
+    "title": "Dúvidas Comuns",
+    "subtitle": "Encontre respostas para as perguntas mais frequentes sobre nossos serviços de reciclagem.",
+    "viewAll": "Ver Todas as Perguntas",
+    "questions": {
+      "q1": "Como funciona o processo de reciclagem?",
+      "a1": "Coletamos o plástico, separamos por tipo, lavamos, trituramos e transformamos em matéria-prima para novos produtos.",
+      "q2": "Quais tipos de plástico aceitamos?",
+      "a2": "Aceitamos PET, HDPE, PVC, LDPE, PP, PS e outros termoplásticos comuns.",
+      "q3": "Como agendar uma recolha?",
+      "a3": "Use nosso formulário online ou ligue diretamente. Oferecemos recolha porta-a-porta.",
+      "q4": "Quanto custa o serviço?",
+      "a4": "Para indivíduos, o serviço é gratuito. Para empresas, oferecemos preços competitivos.",
+      "q5": "Como posso ajudar além de reciclar?",
+      "a5": "Eduque outros sobre reciclagem, participe de nossas campanhas de conscientização e doe para projetos ambientais."
+    }
+  },
+  "testimonials": {
+    "label": "Depoimentos",
+    "title": "O Que Dizem Nossos Clientes",
+    "subtitle": "Veja como ajudamos comunidades e empresas em Guiné-Bissau a alcançar seus objetivos de sustentabilidade."
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "Notícias e Artigos",
+    "subtitle": "Mantenha-se informado sobre reciclagem, sustentabilidade e nossas iniciativas em Guiné-Bissau.",
+    "readMore": "Ler Mais",
+    "viewAll": "Ver Todos os Artigos"
+  },
+  "contact": {
+    "label": "Contato",
+    "title": "Entre em Contato",
+    "subtitle": "Pronto para começar sua jornada de reciclagem? Entre em contato conosco hoje.",
+    "newsletter": {
+      "title": "Assine Nossa Newsletter",
+      "subtitle": "Receba atualizações sobre nossas iniciativas ambientais e dicas de reciclagem.",
+      "placeholder": "Seu email",
+      "submit": "Assinar"
+    }
+  },
+  "footer": {
+    "about": "Sobre a Renoverde",
+    "aboutText": "Empresa líder em reciclagem de plástico em Guiné-Bissau, dedicada à sustentabilidade ambiental.",
+    "navigationTitle": "Navegação",
+    "servicesTitle": "Serviços",
+    "newsTitle": "Notícias Recentes",
+    "links": {
+      "services": "Serviços",
+      "about": "Sobre Nós",
+      "blog": "Blog",
+      "contact": "Contato"
+    },
+    "contact": {
+      "title": "Contato",
+      "address": "Sitech e Safim, Bairro Luanda, Bissau, Guiné-Bissau",
+      "email": "renoverdereciclagem@gmail.com",
+      "phone": "+245 XXX XXX XXX"
+    },
+    "newsletter": "Newsletter",
+    "copyright": "© 2026 Renoverde. Todos os direitos reservados."
+  },
+  "languages": {
+    "pt": "Português",
+    "en": "English",
+    "fr": "Français"
+  }
+}

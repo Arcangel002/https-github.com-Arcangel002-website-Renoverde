@@ -1,21 +1,8 @@
 /*********************about****************/
-.center_about{
-background-image: url('../img/240_F_681891620_xzSk2DY7TLMuCMwBrJKjpJ7cP2BTvaD2.jpg');
-background-position: center center;
-background-size: cover;
-}
-
-.center_cont{
-background-image: url('../img/240_F_681891620_xzSk2DY7TLMuCMwBrJKjpJ7cP2BTvaD2.jpg');
-background-position: center center;
-background-size: cover;
-}
-.center_serv{
-background-image: url('../img/240_F_681891620_xzSk2DY7TLMuCMwBrJKjpJ7cP2BTvaD2.jpg');
-background-position: center center;
-background-size: cover;
-}
-.center_faq{
+.center_about,
+.center_cont,
+.center_serv,
+.center_faq {
 background-image: url('../img/240_F_681891620_xzSk2DY7TLMuCMwBrJKjpJ7cP2BTvaD2.jpg');
 background-position: center center;
 background-size: cover;

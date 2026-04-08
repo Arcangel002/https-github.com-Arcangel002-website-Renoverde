@@ -1,0 +1,28 @@
+/* Language Switcher Styles */
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.language-switcher .lang-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #dce8e1;
+  background: #fff;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.language-switcher .lang-select:hover {
+  border-color: #54be73;
+}
+
+.language-switcher .lang-select:focus {
+  border-color: #54be73;
+  box-shadow: 0 0 0 3px rgba(84, 190, 115, 0.1);
+}

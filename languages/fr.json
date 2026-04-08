@@ -1,0 +1,158 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "mission": "Mission",
+    "blog": "Blog",
+    "faq": "FAQ",
+    "schedule": "Planifier la Collecte"
+  },
+  "topbar": {
+    "welcome": "Bienvenue chez Renoverde !",
+    "findUs": "Comment nous trouver",
+    "feedback": "Donner un feedback"
+  },
+  "hero": {
+    "tag": "Recyclage Durable",
+    "title": "Transformer le Plastique en Avenir Durable",
+    "subtitle": "Nous sommes une entreprise de recyclage du plastique en Guinée-Bissau, dédiée à créer un avenir plus durable grâce à la transformation des déchets plastiques en produits utiles.",
+    "cta": "En Savoir Plus",    "secondary": "Voir les Services",    "stats": {
+      "plastic": "Tonnes de Plastique Recyclé",
+      "products": "Produits Créés",
+      "communities": "Communautés Aidées"
+    }
+  },
+  "about": {
+    "label": "À Propos",
+    "title": "Qui Nous Sommes",
+    "subtitle": "Renoverde est une entreprise leader dans le recyclage du plastique en Guinée-Bissau, engagée dans la durabilité environnementale et le développement communautaire.",
+    "stats": {
+      "recycled": "Tonnes Recyclées",
+      "products": "Produits Créés",
+      "jobs": "Emplois Créés"
+    }
+  },
+  "services": {
+    "label": "Nos Services",
+    "title": "Ce Que Nous Offrons",
+    "subtitle": "Nous offrons une gamme complète de services de recyclage et de transformation du plastique pour répondre aux besoins de votre communauté.",
+    "items": {
+      "collection": {
+        "title": "Collecte de Plastique",
+        "desc": "Service de collecte porte-à-porte des déchets plastiques dans toute la Guinée-Bissau."
+      },
+      "recycling": {
+        "title": "Transformation",
+        "desc": "Transformation avancée du plastique recyclé en matière première de haute qualité."
+      },
+      "products": {
+        "title": "Produits Durables",
+        "desc": "Création de produits écologiques et durables pour usage domestique et commercial."
+      }
+    },
+    "cta": "Demander un Service"
+  },
+  "mission": {
+    "label": "Notre Mission",
+    "title": "Pourquoi Nous Existons",
+    "subtitle": "Notre mission est de combattre la pollution plastique en Guinée-Bissau grâce au recyclage innovant et à l'éducation environnementale.",
+    "vision": {
+      "title": "Vision",
+      "content": "Être l'entreprise leader en recyclage durable en Afrique de l'Ouest, créant un avenir sans plastique jetable."
+    },
+    "values": {
+      "title": "Valeurs",
+      "content": "La durabilité, l'innovation, la transparence et le développement communautaire guident toutes nos actions."
+    }
+  },
+  "schedule": {
+    "label": "Planification",
+    "title": "Planifiez Votre Collecte",
+    "subtitle": "Nous facilitons le recyclage. Planifiez une collecte pratique et contribuez à une Guinée-Bissau plus propre.",
+    "form": {
+      "name": "Nom Complet",
+      "email": "Email",
+      "phone": "Téléphone",
+      "wasteType": "Type de Déchet",
+      "wasteTypes": {
+        "plastic": "Plastique",
+        "paper": "Papier",
+        "glass": "Verre",
+        "metal": "Métal",
+        "other": "Autre"
+      },
+      "date": "Date Préférée",
+      "time": "Heure Préférée",
+      "message": "Message Supplémentaire",
+      "submit": "Planifier la Collecte"
+    }
+  },
+  "faq": {
+    "label": "Questions Fréquentes",
+    "title": "Questions Courantes",
+    "subtitle": "Trouvez des réponses aux questions les plus fréquemment posées sur nos services de recyclage.",
+    "viewAll": "Voir toutes les questions",
+    "questions": {
+      "q1": "Comment fonctionne le processus de recyclage ?",
+      "a1": "Nous collectons le plastique, le trions par type, le lavons, le broyons et le transformons en matière première pour de nouveaux produits.",
+      "q2": "Quels types de plastique acceptez-vous ?",
+      "a2": "Nous acceptons PET, HDPE, PVC, LDPE, PP, PS et autres thermoplastiques courants.",
+      "q3": "Comment planifier une collecte ?",
+      "a3": "Utilisez notre formulaire en ligne ou appelez directement. Nous offrons la collecte porte-à-porte.",
+      "q4": "Combien coûte le service ?",
+      "a4": "Pour les particuliers, le service est gratuit. Pour les entreprises, nous proposons des prix compétitifs.",
+      "q5": "Comment puis-je aider au-delà du recyclage ?",
+      "a5": "Éduquez les autres sur le recyclage, participez à nos campagnes de sensibilisation et faites des dons pour des projets environnementaux."
+    }
+  },
+  "testimonials": {
+    "label": "Témoignages",
+    "title": "Ce Que Disent Nos Clients",
+    "subtitle": "Découvrez comment nous aidons les communautés et les entreprises en Guinée-Bissau à atteindre leurs objectifs de durabilité."
+  },
+  "blog": {
+    "label": "Blog",
+    "title": "Actualités et Articles",
+    "subtitle": "Restez informé sur le recyclage, la durabilité et nos initiatives en Guinée-Bissau.",
+    "readMore": "Lire Plus",
+    "viewAll": "Voir tous les articles"
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Contactez-Nous",
+    "subtitle": "Prêt à commencer votre parcours de recyclage ? Contactez-nous dès aujourd'hui.",
+    "newsletter": {
+      "title": "Abonnez-Vous à Notre Newsletter",
+      "subtitle": "Recevez des mises à jour sur nos initiatives environnementales et des conseils de recyclage.",
+      "placeholder": "Votre email",
+      "submit": "S'abonner"
+    }
+  },
+  "footer": {
+    "about": "À Propos de Renoverde",
+    "aboutText": "Entreprise leader dans le recyclage du plastique en Guinée-Bissau, dédiée à la durabilité environnementale.",
+    "navigationTitle": "Navigation",
+    "servicesTitle": "Services",
+    "newsTitle": "Actualités Récentes",
+    "links": {
+      "services": "Services",
+      "about": "À Propos",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Sitech e Safim, Bairro Luanda, Bissau, Guinée-Bissau",
+      "email": "renoverdereciclagem@gmail.com",
+      "phone": "+245 XXX XXX XXX"
+    },
+    "newsletter": "Newsletter",
+    "copyright": "© 2026 Renoverde. Tous droits réservés."
+  },
+  "languages": {
+    "pt": "Português",
+    "en": "English",
+    "fr": "Français"
+  }
+}

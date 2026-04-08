@@ -84,12 +84,24 @@ class APIService {
     return this.fetch('/servicos');
   }
 
+  static async getProducts() {
+    return this.fetch('/produtos');
+  }
+
+  static async getLaunches() {
+    return this.fetch('/lancamentos');
+  }
+
   static async getPosts() {
     return this.fetch('/blog/posts');
   }
 
   static async getFAQs() {
     return this.fetch('/faq');
+  }
+
+  static async getTeam() {
+    return this.fetch('/equipe');
   }
 
   static async submitContact(data) {
@@ -111,6 +123,32 @@ class Components {
           <p>${service.descricao || 'Serviço de reciclagem profissional'}</p>
           ${service.preco ? `<span class="price">Desde R$ ${parseFloat(service.preco).toFixed(2)}</span>` : ''}
           <a href="#" class="btn btn-small">Saiba Mais</a>
+        </div>
+      </article>
+    `).join('');
+  }
+
+  static renderProducts(products) {
+    return products.map(product => `
+      <article class="product-card">
+        ${product.imagem ? `<img src="${product.imagem}" alt="${product.titulo}">` : ''}
+        <div class="product-content">
+          <h3>${product.titulo}</h3>
+          <p>${product.descricao || 'Produto sustentável produzido com plástico reciclado.'}</p>
+          ${product.preco ? `<span class="price">R$ ${parseFloat(product.preco).toFixed(2)}</span>` : ''}
+        </div>
+      </article>
+    `).join('');
+  }
+
+  static renderLaunches(launches) {
+    return launches.map(launch => `
+      <article class="launch-card">
+        ${launch.imagem ? `<img src="${launch.imagem}" alt="${launch.titulo}">` : ''}
+        <div class="launch-content">
+          <h3>${launch.titulo}</h3>
+          <p>${launch.descricao || 'Lançamento de produto ou iniciativa sustentável.'}</p>
+          ${launch.data_lancamento ? `<span class="launch-date">Lançamento: ${new Date(launch.data_lancamento).toLocaleDateString('pt-BR')}</span>` : ''}
         </div>
       </article>
     `).join('');
@@ -143,6 +181,16 @@ class Components {
         <div class="faq-answer">
           <p>${faq.resposta}</p>
         </div>
+      </div>
+    `).join('');
+  }
+
+  static renderTeam(team) {
+    return team.map(member => `
+      <div class="team-card">
+        <div class="team-avatar">${member.nome.split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase()}</div>
+        <h4>${member.nome}</h4>
+        <p>${member.cargo}</p>
       </div>
     `).join('');
   }
@@ -181,6 +229,16 @@ class App {
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
       newsletterForm.addEventListener('submit', (e) => this.handleNewsletterSubmit(e));
+    }
+
+    const productForm = document.getElementById('productForm');
+    if (productForm) {
+      productForm.addEventListener('submit', (e) => this.handleProductSubmit(e));
+    }
+
+    const launchForm = document.getElementById('launchForm');
+    if (launchForm) {
+      launchForm.addEventListener('submit', (e) => this.handleLaunchSubmit(e));
     }
   }
 
@@ -239,30 +297,139 @@ class App {
     }
   }
 
-  async loadInitialData() {
+  async handleProductSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+
     try {
-      // Load Services
+      const payload = {
+        titulo: form.titulo.value,
+        descricao: form.descricao.value,
+        imagem: form.imagem.value,
+        preco: form.preco.value,
+      };
+
+      await this.api.fetch('/produtos', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+
+      alert('Produto criado com sucesso!');
+      form.reset();
+      await this.loadProducts();
+    } catch (error) {
+      alert('Erro ao criar produto. Tente novamente.');
+      console.error(error);
+    }
+  }
+
+  async handleLaunchSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+
+    try {
+      const payload = {
+        titulo: form.titulo.value,
+        descricao: form.descricao.value,
+        imagem: form.imagem.value,
+        data_lancamento: form.data_lancamento.value,
+      };
+
+      await this.api.fetch('/lancamentos', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+
+      alert('Lançamento criado com sucesso!');
+      form.reset();
+      await this.loadLaunches();
+    } catch (error) {
+      alert('Erro ao criar lançamento. Tente novamente.');
+      console.error(error);
+    }
+  }
+
+  async loadServices() {
+    const services = await this.api.getServices();
+    const servicesContainer = document.getElementById('servicesList');
+    if (servicesContainer && services.data) {
+      servicesContainer.innerHTML = Components.renderServices(services.data);
+    }
+  }
+
+  async loadProducts() {
+    const products = await this.api.getProducts();
+    const productsContainer = document.getElementById('productList');
+    if (productsContainer && products.data) {
+      productsContainer.innerHTML = Components.renderProducts(products.data);
+    }
+  }
+
+  async loadLaunches() {
+    const launches = await this.api.getLaunches();
+    const launchesContainer = document.getElementById('launchList');
+    if (launchesContainer && launches.data) {
+      launchesContainer.innerHTML = Components.renderLaunches(launches.data);
+    }
+  }
+
+  async loadInitialData() {
+    // Load Services
+    try {
       const services = await this.api.getServices();
       const servicesContainer = document.getElementById('servicesList');
       if (servicesContainer && services.data) {
         servicesContainer.innerHTML = Components.renderServices(services.data);
       }
+    } catch (error) {
+      console.warn('Could not load services:', error.message);
+    }
 
-      // Load Blog Posts
+    // Load Blog Posts
+    try {
       const posts = await this.api.getPosts();
       const blogsContainer = document.getElementById('blogList');
       if (blogsContainer && posts.data) {
         blogsContainer.innerHTML = Components.renderBlogPosts(posts.data);
       }
+    } catch (error) {
+      console.warn('Could not load blog posts:', error.message);
+    }
 
-      // Load FAQs
+    // Load FAQs
+    try {
       const faqs = await this.api.getFAQs();
       const faqsContainer = document.getElementById('faqList');
       if (faqsContainer && faqs.data) {
         faqsContainer.innerHTML = Components.renderFAQs(faqs.data);
       }
     } catch (error) {
-      console.error('Error loading initial data:', error);
+      console.warn('Could not load FAQs:', error.message);
+    }
+
+    // Load Team
+    try {
+      const team = await this.api.getTeam();
+      const teamContainer = document.getElementById('teamList');
+      if (teamContainer && team.data) {
+        teamContainer.innerHTML = Components.renderTeam(team.data);
+      }
+    } catch (error) {
+      console.warn('Could not load team:', error.message);
+    }
+
+    // Load Products
+    try {
+      await this.loadProducts();
+    } catch (error) {
+      console.warn('Could not load products:', error.message);
+    }
+
+    // Load Launches
+    try {
+      await this.loadLaunches();
+    } catch (error) {
+      console.warn('Could not load launches:', error.message);
     }
   }
 }
@@ -270,6 +437,4 @@ class App {
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   window.app = new App();
-  // Show home page by default
-  window.app.router.navigate('home');
 });
