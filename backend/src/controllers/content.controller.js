@@ -2,19 +2,121 @@ import { Service, Product, Launch, FAQ, TeamMember, NewsletterSubscriber } from 
 import { asyncHandler, ApiError } from '../middleware/errorHandler.js';
 
 // ═══════════════════════════════════════════════
+// OFFLINE FALLBACK DATA
+// ═══════════════════════════════════════════════
+
+const offlineServices = [
+  {
+    id: 1,
+    titulo: 'Recolha de Plásticos',
+    descricao: 'Serviço profissional de recolha de resíduos plásticos em empresas e residências.',
+    imagem: '/img/plastic.jfif',
+    preco: 50.00,
+    ativo: true,
+    ordem_exibicao: 1,
+    created_at: new Date(),
+  },
+  {
+    id: 2,
+    titulo: 'Reciclagem Industrial',
+    descricao: 'Processamento e reciclagem de grandes volumes de plástico industrial.',
+    imagem: '/img/plastic extruder.jfif',
+    preco: 200.00,
+    ativo: true,
+    ordem_exibicao: 2,
+    created_at: new Date(),
+  },
+];
+
+const offlineFAQs = [
+  {
+    id: 1,
+    pergunta: 'Quais tipos de resíduos vocês recolhem?',
+    resposta: 'Recolhemos plásticos de todos os tipos, papel, metal, vidro e eletrónicos.',
+    categoria: 'serviços',
+    ativo: true,
+    created_at: new Date(),
+  },
+  {
+    id: 2,
+    pergunta: 'Como funciona o agendamento?',
+    resposta: 'Você pode agendar uma recolha através do nosso site ou aplicativo.',
+    categoria: 'agendamento',
+    ativo: true,
+    created_at: new Date(),
+  },
+];
+
+const offlineTeam = [
+  {
+    id: 1,
+    nome: 'João Silva',
+    cargo: 'Diretor Executivo',
+    email: 'joao@renoverde.gw',
+    telefone: '+245 123 456 789',
+    ativo: true,
+    created_at: new Date(),
+  },
+];
+
+const offlineProducts = [
+  {
+    id: 1,
+    titulo: 'Mesa de Plástico Reciclado',
+    descricao: 'Mesa resistente feita de plástico 100% reciclado.',
+    imagem: '/img/mesa de plástico reciclado.jfif',
+    preco: 150.00,
+    ativo: true,
+    created_at: new Date(),
+  },
+  {
+    id: 2,
+    titulo: 'Copo Ecológico',
+    descricao: 'Copo reutilizável feito de plástico reciclado.',
+    imagem: '/img/copo.jfif',
+    preco: 5.00,
+    ativo: true,
+    created_at: new Date(),
+  },
+];
+
+const offlineLaunches = [
+  {
+    id: 1,
+    titulo: 'Novo Centro de Reciclagem',
+    descricao: 'Inauguração do nosso novo centro de reciclagem com tecnologia de ponta.',
+    imagem: '/img/ciclo de produto.jfif',
+    data_lancamento: new Date('2024-12-01'),
+    ativo: true,
+    created_at: new Date(),
+  },
+];
+
+const offlineSubscribers = [];
+let offlineSubscriberId = 1;
+
+// ═══════════════════════════════════════════════
 // SERVICES
 // ═══════════════════════════════════════════════
 
 export const getServices = asyncHandler(async (req, res) => {
-  const services = await Service.findAll({
-    where: { ativo: true },
-    order: [['ordem_exibicao', 'ASC']],
-  });
+  try {
+    const services = await Service.findAll({
+      where: { ativo: true },
+      order: [['ordem_exibicao', 'ASC']],
+    });
 
-  res.json({
-    success: true,
-    data: services,
-  });
+    res.json({
+      success: true,
+      data: services,
+    });
+  } catch (dbError) {
+    console.warn('Database unavailable, using offline services data');
+    res.json({
+      success: true,
+      data: offlineServices,
+    });
+  }
 });
 
 export const getServiceById = asyncHandler(async (req, res) => {
@@ -96,15 +198,23 @@ export const deleteService = asyncHandler(async (req, res) => {
 // ═══════════════════════════════════════════════
 
 export const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.findAll({
-    where: { ativo: true },
-    order: [['createdAt', 'DESC']],
-  });
+  try {
+    const products = await Product.findAll({
+      where: { ativo: true },
+      order: [['createdAt', 'DESC']],
+    });
 
-  res.json({
-    success: true,
-    data: products,
-  });
+    res.json({
+      success: true,
+      data: products,
+    });
+  } catch (error) {
+    console.warn('Database unavailable, using offline products data');
+    res.json({
+      success: true,
+      data: offlineProducts,
+    });
+  }
 });
 
 export const getProductById = asyncHandler(async (req, res) => {
@@ -185,15 +295,23 @@ export const deleteProduct = asyncHandler(async (req, res) => {
 // ═══════════════════════════════════════════════
 
 export const getLaunches = asyncHandler(async (req, res) => {
-  const launches = await Launch.findAll({
-    where: { ativo: true },
-    order: [['data_lancamento', 'DESC']],
-  });
+  try {
+    const launches = await Launch.findAll({
+      where: { ativo: true },
+      order: [['data_lancamento', 'DESC']],
+    });
 
-  res.json({
-    success: true,
-    data: launches,
-  });
+    res.json({
+      success: true,
+      data: launches,
+    });
+  } catch (error) {
+    console.warn('Database unavailable, using offline launches data');
+    res.json({
+      success: true,
+      data: offlineLaunches,
+    });
+  }
 });
 
 export const getLaunchById = asyncHandler(async (req, res) => {
@@ -275,18 +393,27 @@ export const deleteLaunch = asyncHandler(async (req, res) => {
 export const getFAQs = asyncHandler(async (req, res) => {
   const { categoria } = req.query;
 
-  const where = { ativo: true };
-  if (categoria) where.categoria = categoria;
+  try {
+    const where = { ativo: true };
+    if (categoria) where.categoria = categoria;
 
-  const faqs = await FAQ.findAll({
-    where,
-    order: [['ordem_exibicao', 'ASC']],
-  });
+    const faqs = await FAQ.findAll({
+      where,
+      order: [['ordem_exibicao', 'ASC']],
+    });
 
-  res.json({
-    success: true,
-    data: faqs,
-  });
+    res.json({
+      success: true,
+      data: faqs,
+    });
+  } catch (error) {
+    console.warn('Database unavailable, using offline FAQs data');
+    const faqs = categoria ? offlineFAQs.filter(faq => faq.categoria === categoria) : offlineFAQs;
+    res.json({
+      success: true,
+      data: faqs,
+    });
+  }
 });
 
 export const createFAQ = asyncHandler(async (req, res) => {
@@ -353,14 +480,22 @@ export const deleteFAQ = asyncHandler(async (req, res) => {
 // ═══════════════════════════════════════════════
 
 export const getTeam = asyncHandler(async (req, res) => {
-  const team = await TeamMember.findAll({
-    order: [['nome', 'ASC']],
-  });
+  try {
+    const team = await TeamMember.findAll({
+      order: [['nome', 'ASC']],
+    });
 
-  res.json({
-    success: true,
-    data: team,
-  });
+    res.json({
+      success: true,
+      data: team,
+    });
+  } catch (error) {
+    console.warn('Database unavailable, using offline team data');
+    res.json({
+      success: true,
+      data: offlineTeam,
+    });
+  }
 });
 
 export const getTeamMember = asyncHandler(async (req, res) => {
@@ -446,39 +581,76 @@ export const deleteTeamMember = asyncHandler(async (req, res) => {
 export const subscribeNewsletter = asyncHandler(async (req, res) => {
   const { email, nome } = req.body;
 
-  // Check if already subscribed
-  const existingSubscriber = await NewsletterSubscriber.findOne({
-    where: { email },
-  });
+  try {
+    // Check if already subscribed
+    const existingSubscriber = await NewsletterSubscriber.findOne({
+      where: { email },
+    });
 
-  if (existingSubscriber) {
-    if (existingSubscriber.ativo) {
-      return res.status(409).json({
-        success: false,
-        message: 'Este email já está inscrito',
-        statusCode: 409,
-      });
-    } else {
-      // Reactivate
-      existingSubscriber.ativo = true;
-      await existingSubscriber.save();
+    if (existingSubscriber) {
+      if (existingSubscriber.ativo) {
+        return res.status(409).json({
+          success: false,
+          message: 'Este email já está inscrito',
+          statusCode: 409,
+        });
+      } else {
+        // Reactivate
+        existingSubscriber.ativo = true;
+        await existingSubscriber.save();
 
-      return res.json({
-        success: true,
-        message: 'Inscrição reativada com sucesso',
-      });
+        return res.json({
+          success: true,
+          message: 'Inscrição reativada com sucesso',
+        });
+      }
     }
+
+    await NewsletterSubscriber.create({
+      email,
+      nome,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'Inscrição realizada com sucesso!',
+    });
+  } catch (error) {
+    console.warn('Database unavailable, using offline newsletter storage');
+    // Check if already subscribed in offline mode
+    const existingSubscriber = offlineSubscribers.find(sub => sub.email === email);
+    if (existingSubscriber) {
+      if (existingSubscriber.ativo) {
+        return res.status(409).json({
+          success: false,
+          message: 'Este email já está inscrito',
+          statusCode: 409,
+        });
+      } else {
+        // Reactivate
+        existingSubscriber.ativo = true;
+        return res.json({
+          success: true,
+          message: 'Inscrição reativada com sucesso',
+        });
+      }
+    }
+
+    // Add new subscriber
+    offlineSubscribers.push({
+      id: offlineSubscriberId++,
+      email,
+      nome,
+      ativo: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'Inscrição realizada com sucesso!',
+    });
   }
-
-  await NewsletterSubscriber.create({
-    email,
-    nome,
-  });
-
-  res.status(201).json({
-    success: true,
-    message: 'Inscrição realizada com sucesso!',
-  });
 });
 
 export const unsubscribeNewsletter = asyncHandler(async (req, res) => {

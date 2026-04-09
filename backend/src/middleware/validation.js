@@ -131,3 +131,40 @@ export const validateId = [
     .isInt().withMessage('ID deve ser um número válido'),
   handleValidationErrors,
 ];
+
+// Scheduling validation
+export const validateScheduling = [
+  body('nome')
+    .trim()
+    .notEmpty().withMessage('Nome é obrigatório')
+    .isLength({ min: 3 }).withMessage('Nome deve ter pelo menos 3 caracteres'),
+  
+  body('email')
+    .trim()
+    .isEmail().withMessage('Email inválido'),
+  
+  body('telefone')
+    .optional()
+    .trim()
+    .matches(/^[\d\s\-\+\(\)]+$/).withMessage('Telefone inválido'),
+  
+  body('tipo_residuo')
+    .trim()
+    .notEmpty().withMessage('Tipo de resíduo é obrigatório'),
+  
+  body('data')
+    .trim()
+    .notEmpty().withMessage('Data preferida é obrigatória')
+    .isISO8601().withMessage('Data deve estar em formato válido'),
+  
+  body('horario')
+    .optional()
+    .trim(),
+  
+  body('mensagem')
+    .trim()
+    .optional(),
+  
+  handleValidationErrors,
+];
+

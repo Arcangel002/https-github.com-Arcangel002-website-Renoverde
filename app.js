@@ -110,6 +110,13 @@ class APIService {
       body: JSON.stringify(data),
     });
   }
+
+  static async submitScheduling(data) {
+    return this.fetch('/agendamentos', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    });
+  }
 }
 
 // UI Components
@@ -247,30 +254,43 @@ class App {
     const form = e.target;
 
     try {
-      // Construct assunto based on form type and waste type
+      // Check if this is a scheduling form (has tipo_residuo field)
       const tipoResiduo = form.tipo_residuo ? form.tipo_residuo.value : '';
       const data = form.data ? form.data.value : '';
       const horario = form.horario ? form.horario.value : '';
-      
-      const assunto = `Agendamento de Recolha - ${tipoResiduo}`;
-      
-      // Build detailed message with scheduling info
-      let mensagemCompleta = form.mensagem.value || '';
-      if (data || horario) {
-        mensagemCompleta = `Data preferida: ${data}\nHorário preferido: ${horario}\n\n${mensagemCompleta}`;
+
+      if (tipoResiduo && data) {
+        // This is a scheduling request - use new endpoint
+        const dataToSend = {
+          nome: form.nome.value,
+          email: form.email.value,
+          telefone: form.telefone.value,
+          tipo_residuo: tipoResiduo,
+          data: data,
+          horario: horario,
+          mensagem: form.mensagem.value || '',
+        };
+
+        await this.api.fetch('/agendamentos', {
+          method: 'POST',
+          body: JSON.stringify(dataToSend),
+        });
+
+        alert('Agendamento solicitado com sucesso! Entraremos em contato para confirmar.');
+      } else {
+        // This is a regular contact form
+        const dataToSend = {
+          nome: form.nome.value,
+          email: form.email.value,
+          telefone: form.telefone.value,
+          assunto: form.assunto ? form.assunto.value : 'Contacto Geral',
+          mensagem: form.mensagem.value,
+        };
+
+        await this.api.submitContact(dataToSend);
+        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
       }
 
-      const dataToSend = {
-        nome: form.nome.value,
-        email: form.email.value,
-        telefone: form.telefone.value,
-        assunto: assunto,
-        mensagem: mensagemCompleta,
-      };
-
-      await this.api.submitContact(dataToSend);
-      
-      alert('Agendamento solicitado com sucesso! Entraremos em contato para confirmar.');
       form.reset();
       this.router.navigate('home');
     } catch (error) {

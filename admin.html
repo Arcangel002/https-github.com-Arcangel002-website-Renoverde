@@ -314,6 +314,18 @@
       overflow-y: auto;
     }
 
+    body.locked header,
+    body.locked .layout {
+      filter: blur(2px);
+      opacity: 0.35;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    #loginOverlay .modal-content {
+      max-width: 430px;
+    }
+
     .modal-header {
       display: flex;
       justify-content: space-between;
@@ -327,6 +339,22 @@
       font-size: 1.5rem;
       cursor: pointer;
       color: var(--gray);
+    }
+
+    .auth-switch {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--gray);
+    }
+
+    .auth-switch button {
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      min-width: 110px;
     }
 
     /* Utility */
@@ -411,7 +439,49 @@
     }
   </style>
 </head>
-<body>
+<body class="locked">
+  <div id="loginOverlay" class="modal open" aria-labelledby="loginTitle" role="dialog" aria-modal="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h2 id="authTitle">Acesso Administrativo</h2>
+          <p id="authSubtext" class="text-muted" style="margin-top:.5rem;">Faça login para acessar o painel seguro.</p>
+        </div>
+      </div>
+      <div id="authError" class="alert alert-error" style="display:none; margin-bottom:1rem;"></div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" name="email" placeholder="seu@exemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Senha</label>
+          <input id="loginPassword" type="password" name="password" placeholder="Senha segura" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
+      <form id="registerForm" style="display:none;">
+        <div class="form-group">
+          <label for="registerName">Nome</label>
+          <input id="registerName" type="text" name="nome" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input id="registerEmail" type="email" name="email" placeholder="seu@exemplo.com" required>
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Senha</label>
+          <input id="registerPassword" type="password" name="password" placeholder="Senha segura" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+      </form>
+      <div class="text-center mt-2">
+        <span id="authToggleText">Ainda não tem conta?</span>
+        <button id="toggleAuthBtn" class="btn btn-secondary btn-small" style="margin-left: 0.75rem;">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Header -->
   <header>
     <div class="container">
@@ -434,9 +504,11 @@
           <li><a href="#" onclick="navigateTo('dashboard')" class="nav-link active">📊 Dashboard</a></li>
           <li><a href="#" onclick="navigateTo('blog')" class="nav-link">📝 Blog</a></li>
           <li><a href="#" onclick="navigateTo('services')" class="nav-link">🔧 Serviços</a></li>
+          <li><a href="#" onclick="navigateTo('content')" class="nav-link">📦 Produtos / Lançamentos</a></li>
           <li><a href="#" onclick="navigateTo('team')" class="nav-link">👥 Equipa</a></li>
           <li><a href="#" onclick="navigateTo('faq')" class="nav-link">❓ FAQ</a></li>
           <li><a href="#" onclick="navigateTo('contacts')" class="nav-link">✉️ Contactos</a></li>
+          <li><a href="#" onclick="navigateTo('scheduling')" class="nav-link">📅 Agendamentos</a></li>
           <li><a href="#" onclick="navigateTo('newsletter')" class="nav-link">📧 Newsletter</a></li>
         </ul>
       </nav>
@@ -505,6 +577,64 @@
         </div>
       </div>
 
+      <!-- Products & Launches Management -->
+      <div id="content" class="page">
+        <h1>Produtos e Lançamentos</h1>
+        <p class="page-intro">Adicione novos produtos e anúncios de lançamento diretamente aqui.</p>
+        <div class="card">
+          <div style="display:grid; gap:2rem;">
+            <div>
+              <h2 style="margin-bottom:1rem;">Adicionar Produto</h2>
+              <form id="productForm" onsubmit="handleProductSubmit(event)">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Título do Produto</label>
+                    <input type="text" name="titulo" placeholder="Ex: Ecobloco 1" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Preço</label>
+                    <input type="number" name="preco" placeholder="00.00" step="0.01" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <textarea name="descricao" placeholder="Descreva o produto" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Imagem (URL)</label>
+                  <input type="url" name="imagem" placeholder="https://..." required>
+                </div>
+                <button type="submit" class="btn btn-primary">Criar Produto</button>
+              </form>
+            </div>
+            <div>
+              <h2 style="margin-bottom:1rem;">Adicionar Lançamento</h2>
+              <form id="launchForm" onsubmit="handleLaunchSubmit(event)">
+                <div class="form-group">
+                  <label>Título do Lançamento</label>
+                  <input type="text" name="titulo" placeholder="Ex: Nova Linha Verde" required>
+                </div>
+                <div class="form-group">
+                  <label>Descrição</label>
+                  <textarea name="descricao" placeholder="Detalhes do lançamento" required></textarea>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label>Imagem (URL)</label>
+                    <input type="url" name="imagem" placeholder="https://..." required>
+                  </div>
+                  <div class="form-group">
+                    <label>Data de Lançamento</label>
+                    <input type="date" name="data_lancamento" required>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Criar Lançamento</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Team Management -->
       <div id="team" class="page">
         <h1>Gerenciar Equipa</h1>
@@ -537,6 +667,16 @@
         </div>
       </div>
 
+      <!-- Scheduling -->
+      <div id="scheduling" class="page">
+        <h1>Agendamentos de Recolha</h1>
+        <p class="page-intro">Veja todos os agendamentos solicitados</p>
+        
+        <div class="card">
+          <div id="schedulingList"></div>
+        </div>
+      </div>
+
       <!-- Newsletter -->
       <div id="newsletter" class="page">
         <h1>Gestão da Newsletter</h1>
@@ -560,23 +700,14 @@
       document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
       event.target.classList.add('active');
       currentPage = page;
+
+      // Load data for specific pages
+      if (page === 'contacts' || page === 'scheduling') {
+        loadDashboardData();
+      }
     }
 
     // API calls
-    async function apiCall(endpoint, options = {}) {
-      try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-          headers: { 'Content-Type': 'application/json', ...options.headers },
-          ...options,
-        });
-        if (!response.ok) throw new Error(`API Error: ${response.statusText}`);
-        return await response.json();
-      } catch (error) {
-        console.error('API Error:', error);
-        showAlert('Erro ao comunicar com servidor', 'error');
-        throw error;
-      }
-    }
 
     // UI Helpers
     function showAlert(message, type = 'success') {
@@ -587,20 +718,223 @@
       setTimeout(() => alert.remove(), 3000);
     }
 
+    const AUTH_API_BASE_URL = 'http://localhost:5001/api';
+    const ADMIN_TOKEN_KEY = 'renoverdeAdminAccessToken';
+    const ADMIN_REFRESH_KEY = 'renoverdeAdminRefreshToken';
+
     function logout() {
       if (confirm('Tem certeza que deseja sair?')) {
-        localStorage.removeItem('token');
-        window.location.href = 'index.html';
+        localStorage.removeItem(ADMIN_TOKEN_KEY);
+        localStorage.removeItem(ADMIN_REFRESH_KEY);
+        showLogin('Você saiu com sucesso.');
+      }
+    }
+
+    function showLogin(message = '') {
+      document.body.classList.add('locked');
+      document.getElementById('loginOverlay').classList.add('open');
+      document.querySelector('header').style.display = 'block';
+      if (message) {
+        const loginError = document.getElementById('loginError');
+        loginError.textContent = message;
+        loginError.style.display = 'block';
+      }
+    }
+
+    function hideLogin() {
+      document.body.classList.remove('locked');
+      document.getElementById('loginOverlay').classList.remove('open');
+      document.getElementById('loginError').style.display = 'none';
+    }
+
+    async function checkAdminAuth() {
+      const token = localStorage.getItem(ADMIN_TOKEN_KEY);
+      if (!token) {
+        showLogin();
+        return;
+      }
+
+      try {
+        const response = await fetch(`${AUTH_API_BASE_URL}/auth/me`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        if (!response.ok) {
+          throw new Error('Não autorizado');
+        }
+
+        hideLogin();
+        await loadDashboardData();
+      } catch (error) {
+        localStorage.removeItem(ADMIN_TOKEN_KEY);
+        localStorage.removeItem(ADMIN_REFRESH_KEY);
+        showLogin('Sessão expirada ou inválida. Faça login novamente.');
+      }
+    }
+
+    async function handleLoginSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value.trim();
+
+      try {
+        const response = await fetch(`${AUTH_API_BASE_URL}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Falha no login');
+        }
+
+        const result = await response.json();
+        const { accessToken, refreshToken } = result.data;
+        localStorage.setItem(ADMIN_TOKEN_KEY, accessToken);
+        localStorage.setItem(ADMIN_REFRESH_KEY, refreshToken);
+
+        hideLogin();
+        await loadDashboardData();
+      } catch (error) {
+        const loginError = document.getElementById('authError');
+        loginError.textContent = error.message || 'Erro ao efetuar login';
+        loginError.style.display = 'block';
+      }
+    }
+
+    async function handleRegisterSubmit(event) {
+      event.preventDefault();
+      const nome = document.getElementById('registerName').value.trim();
+      const email = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value.trim();
+
+      try {
+        const response = await fetch(`${AUTH_API_BASE_URL}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome, email, password }),
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.message || 'Falha no cadastro');
+        }
+
+        const result = await response.json();
+        const { accessToken, refreshToken } = result.data;
+        localStorage.setItem(ADMIN_TOKEN_KEY, accessToken);
+        localStorage.setItem(ADMIN_REFRESH_KEY, refreshToken);
+
+        hideLogin();
+        await loadDashboardData();
+      } catch (error) {
+        const loginError = document.getElementById('authError');
+        loginError.textContent = error.message || 'Erro ao efetuar cadastro';
+        loginError.style.display = 'block';
+      }
+    }
+
+    function setAuthMode(mode) {
+      const loginForm = document.getElementById('loginForm');
+      const registerForm = document.getElementById('registerForm');
+      const authTitle = document.getElementById('authTitle');
+      const authSubtext = document.getElementById('authSubtext');
+      const toggleAuthBtn = document.getElementById('toggleAuthBtn');
+      const authToggleText = document.getElementById('authToggleText');
+      const authError = document.getElementById('authError');
+
+      authError.style.display = 'none';
+      if (mode === 'register') {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+        authTitle.textContent = 'Cadastro de Administrador';
+        authSubtext.textContent = 'Crie uma conta administrativa para acessar o painel.';
+        toggleAuthBtn.textContent = 'Entrar';
+        authToggleText.textContent = 'Já tem conta?';
+      } else {
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+        authTitle.textContent = 'Acesso Administrativo';
+        authSubtext.textContent = 'Faça login para acessar o painel seguro.';
+        toggleAuthBtn.textContent = 'Cadastrar';
+        authToggleText.textContent = 'Ainda não tem conta?';
+      }
+    }
+
+    function toggleAuthMode(event) {
+      event.preventDefault();
+      const registerForm = document.getElementById('registerForm');
+      setAuthMode(registerForm.style.display === 'block' ? 'login' : 'register');
+    }
+
+    async function refreshAdminToken() {
+      const refreshToken = localStorage.getItem(ADMIN_REFRESH_KEY);
+      if (!refreshToken) return false;
+
+      try {
+        const response = await fetch(`${AUTH_API_BASE_URL}/auth/refresh-token`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ refreshToken }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Não foi possível renovar o token');
+        }
+
+        const result = await response.json();
+        localStorage.setItem(ADMIN_TOKEN_KEY, result.data.accessToken);
+        localStorage.setItem(ADMIN_REFRESH_KEY, result.data.refreshToken);
+        return true;
+      } catch (error) {
+        localStorage.removeItem(ADMIN_TOKEN_KEY);
+        localStorage.removeItem(ADMIN_REFRESH_KEY);
+        return false;
+      }
+    }
+
+    function authHeaders() {
+      const token = localStorage.getItem(ADMIN_TOKEN_KEY);
+      return token ? { Authorization: `Bearer ${token}` } : {};
+    }
+
+    async function apiCall(endpoint, options = {}) {
+      try {
+        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            ...authHeaders(),
+            ...options.headers,
+          },
+          ...options,
+        });
+
+        if (!response.ok) {
+          if (response.status === 401) {
+            const renewed = await refreshAdminToken();
+            if (renewed) {
+              return apiCall(endpoint, options);
+            }
+          }
+          throw new Error(`API Error: ${response.statusText}`);
+        }
+
+        return await response.json();
+      } catch (error) {
+        console.error('API Error:', error);
+        throw error;
       }
     }
 
     // Load initial data
     async function loadDashboardData() {
       try {
-        const [blogs, services, contacts, subscribers] = await Promise.all([
+        const [blogs, services, contacts, scheduling, subscribers] = await Promise.all([
           apiCall('/blog/posts'),
           apiCall('/servicos'),
           apiCall('/contatos'),
+          apiCall('/agendamentos'),
           apiCall('/newsletter/subscribers'),
         ]);
 
@@ -608,9 +942,89 @@
         document.getElementById('servicesCount').textContent = services.data ? services.data.length : 0;
         document.getElementById('contactsCount').textContent = contacts.data ? contacts.data.length : 0;
         document.getElementById('subscribersCount').textContent = subscribers.data ? subscribers.data.length : 0;
+
+        // Load contacts list when switching to contacts page
+        if (currentPage === 'contacts' && contacts.data) {
+          displayContacts(contacts.data);
+        }
+
+        // Load scheduling list when switching to scheduling page
+        if (currentPage === 'scheduling' && scheduling.data) {
+          displayScheduling(scheduling.data);
+        }
       } catch (error) {
         console.error('Error loading dashboard:', error);
       }
+    }
+
+    async function displayContacts(contacts) {
+      const contactsList = document.getElementById('contactsList');
+      if (!contacts || contacts.length === 0) {
+        contactsList.innerHTML = '<p style="text-align: center; color: #666;">Nenhum contacto</p>';
+        return;
+      }
+
+      const html = `
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background-color: #f5f5f5;">
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Nome</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Email</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Telefone</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Assunto</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${contacts.map(contact => `
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px;">${contact.nome || 'N/A'}</td>
+                <td style="padding: 10px;">${contact.email || 'N/A'}</td>
+                <td style="padding: 10px;">${contact.telefone || 'N/A'}</td>
+                <td style="padding: 10px;">${contact.assunto || 'N/A'}</td>
+                <td style="padding: 10px;">${new Date(contact.created_at).toLocaleDateString('pt-PT')}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+      contactsList.innerHTML = html;
+    }
+
+    async function displayScheduling(schedulingList) {
+      const listEl = document.getElementById('schedulingList');
+      if (!schedulingList || schedulingList.length === 0) {
+        listEl.innerHTML = '<p style="text-align: center; color: #666;">Nenhum agendamento</p>';
+        return;
+      }
+
+      const html = `
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background-color: #f5f5f5;">
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Nome</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Email</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Tipo de Resíduo</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Data Preferida</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Horário</th>
+              <th style="padding: 10px; text-align: left; border-bottom: 1px solid #ddd;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${schedulingList.map(item => `
+              <tr style="border-bottom: 1px solid #ddd;">
+                <td style="padding: 10px;">${item.nome || 'N/A'}</td>
+                <td style="padding: 10px;">${item.email || 'N/A'}</td>
+                <td style="padding: 10px;">${item.tipo_residuo || 'N/A'}</td>
+                <td style="padding: 10px;">${item.data_preferida || 'N/A'}</td>
+                <td style="padding: 10px;">${item.horario_preferido || 'N/A'}</td>
+                <td style="padding: 10px;"><span style="padding: 4px 8px; border-radius: 4px; background-color: #fff3cd; color: #856404;">${item.status || 'pendente'}</span></td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      `;
+      listEl.innerHTML = html;
     }
 
     // Stub functions for modals
@@ -619,8 +1033,26 @@
     function openTeamModal() { showAlert('Funcionalidade de gerenciar equipa em desenvolvimento', 'info'); }
     function openFAQModal() { showAlert('Funcionalidade de criar FAQ em desenvolvimento', 'info'); }
 
+    function handleProductSubmit(event) {
+      event.preventDefault();
+      showAlert('Produto enviado para criação (placeholder).', 'success');
+      event.target.reset();
+    }
+
+    function handleLaunchSubmit(event) {
+      event.preventDefault();
+      showAlert('Lançamento enviado para criação (placeholder).', 'success');
+      event.target.reset();
+    }
+
     // Initialize
-    document.addEventListener('DOMContentLoaded', loadDashboardData);
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('loginForm').addEventListener('submit', handleLoginSubmit);
+      document.getElementById('registerForm').addEventListener('submit', handleRegisterSubmit);
+      document.getElementById('toggleAuthBtn').addEventListener('click', toggleAuthMode);
+      setAuthMode('login');
+      checkAdminAuth();
+    });
   </script>
 </body>
 </html>

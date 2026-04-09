@@ -262,7 +262,7 @@
                         <input type="radio" id="localhost" name="apiMode" value="localhost" checked>
                         <label for="localhost">
                             <span class="option-label">Local Development</span>
-                            <span class="option-desc">Backend running on your computer (http://localhost:5001)</span>
+                            <span class="option-desc">Backend running on your computer (http://localhost:3000)</span>
                         </label>
                     </div>
                 </div>
@@ -296,7 +296,7 @@
 
             <div class="current-config">
                 <h3>Current Configuration</h3>
-                <div class="current-url" id="currentUrl">http://localhost:5001/api</div>
+                <div class="current-url" id="currentUrl">http://localhost:5000/api</div>
                 <a href="index.html" class="test-button">🚀 Open Website</a>
             </div>
         </form>
@@ -304,8 +304,9 @@
 
     <script>
         // Initialize form
-        document.getElementById('apiMode').addEventListener('change', toggleNgrokInput);
-        document.getElementById('ngrok').addEventListener('change', toggleNgrokInput);
+        document.querySelectorAll('input[name="apiMode"]').forEach((input) => {
+            input.addEventListener('change', toggleNgrokInput);
+        });
         document.getElementById('configForm').addEventListener('submit', saveConfig);
 
         function toggleNgrokInput() {
@@ -348,7 +349,7 @@
                 showStatus(`✅ Configured for ngrok tunnel!<br><code>${apiUrl}/api</code>`, 'success');
             } else {
                 sessionStorage.removeItem('ngrok_url');
-                apiUrl = 'http://localhost:5001';
+                apiUrl = 'http://localhost:5000';
                 showStatus('✅ Configured for local development!', 'success');
             }
 
@@ -387,7 +388,7 @@
             document.getElementById('localhost').checked = true;
             document.getElementById('ngrokUrl').value = '';
             document.getElementById('ngrokSection').classList.remove('active');
-            document.getElementById('currentUrl').textContent = 'http://localhost:5001/api';
+            document.getElementById('currentUrl').textContent = 'http://localhost:5000/api';
             showStatus('✅ Configuration reset to local development', 'success');
         }
 

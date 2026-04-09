@@ -36,6 +36,36 @@ const templates = {
     <p>Guiné-Bissau</p>
   `,
 
+  'scheduling-admin': (data) => `
+    <h2>Novo Agendamento de Recolha</h2>
+    <p><strong>Nome:</strong> ${data.nome}</p>
+    <p><strong>Email:</strong> ${data.email}</p>
+    <p><strong>Telefone:</strong> ${data.telefone || 'Não informado'}</p>
+    <p><strong>Tipo de Resíduo:</strong> ${data.tipo_residuo}</p>
+    <p><strong>Data Preferida:</strong> ${data.data_preferida}</p>
+    <p><strong>Horário Preferido:</strong> ${data.horario_preferido}</p>
+    <hr>
+    <h3>Mensagem:</h3>
+    <p>${data.mensagem?.replace(/\n/g, '<br>') || 'Nenhuma mensagem'}</p>
+    <hr>
+    <p><small>ID do agendamento: ${data.id}</small></p>
+  `,
+
+  'scheduling-confirmation': (data) => `
+    <h2>Agendamento Confirmado!</h2>
+    <p>Olá ${data.nome},</p>
+    <p>Seu agendamento de recolha foi recebido com sucesso.</p>
+    <p><strong>Detalhes:</strong></p>
+    <ul>
+      <li>Data preferida: ${data.data_preferida}</li>
+      <li>Horário preferido: ${data.horario_preferido}</li>
+      <li>Tipo de resíduo: ${data.tipo_residuo}</li>
+    </ul>
+    <p>Nossa equipe entrará em contato em breve para confirmar o agendamento.</p>
+    <hr>
+    <p><strong>Renoverde Reciclagem</strong></p>
+  `,
+
   'newsletter-welcome': (data) => `
     <h2>Bem-vindo à Newsletter Renoverde!</h2>
     <p>Olá ${data.nome || 'leitor'},</p>

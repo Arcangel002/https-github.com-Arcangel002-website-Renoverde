@@ -90,7 +90,7 @@ ${colors.yellow}Next steps:${colors.reset}
    ${colors.yellow}npm run dev${colors.reset}
 
 4. ${colors.blue}Test the API${colors.reset}
-   ${colors.yellow}curl http://localhost:5000/api/health${colors.reset}
+   ${colors.yellow}curl http://localhost:5001/api/health${colors.reset}
 
 ${colors.green}API Endpoints are ready to use! 🎉${colors.reset}
     `);
