@@ -24,6 +24,29 @@ const getAPIBaseURL = () => {
 
 const API_BASE_URL = getAPIBaseURL();
 
+// Supabase REST helper (uses publishable key provided by user)
+const SUPABASE_URL = window.SUPABASE_URL || '';
+const SUPABASE_KEY = window.SUPABASE_KEY || '';
+
+async function supabaseInsert(table, record) {
+  if (!SUPABASE_URL || !SUPABASE_KEY) throw new Error('Supabase credentials missing');
+  const resp = await fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(record)
+  });
+  if (!resp.ok) {
+    const text = await resp.text();
+    throw new Error(`Supabase insert failed: ${resp.status} ${text}`);
+  }
+  return resp.json();
+}
+
 // Router Navigation
 class Router {
   constructor() {
@@ -105,17 +128,17 @@ class APIService {
   }
 
   static async submitContact(data) {
-    return this.fetch('/contatos', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
+    // Insert into Supabase 'contatos' table
+    return supabaseInsert('contatos', data);
   }
 
   static async submitScheduling(data) {
-    return this.fetch('/agendamentos', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
+    // Insert into Supabase 'agendamentos' table
+    return supabaseInsert('agendamentos', data);
+  }
+
+  static async subscribeNewsletter(data) {
+    return supabaseInsert('newsletter', data);
   }
 }
 
@@ -305,10 +328,7 @@ class App {
 
     try {
       const data = { email: form.email.value };
-      await this.api.fetch('/newsletter/subscribe', {
-        method: 'POST',
-        body: JSON.stringify(data),
-      });
+      await this.api.subscribeNewsletter(data);
 
       alert('Inscrição realizada com sucesso!');
       form.reset();
