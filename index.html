@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Renoverde – Guiné-Bissau</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/index.css" rel="stylesheet">
+  <link href="css/global.css" rel="stylesheet">
+  <link href="css/language-switcher.css" rel="stylesheet">
+  <script src="js/multilingual.js"></script>
+</head>
+
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="inner">
+      <div>
+        <span id="topbar-welcome">Bem-vindo à Renoverde!</span>
+        <span class="sep">|</span>
+        <a href="#contact-bar" id="topbar-findus">Como nos encontrar</a>
+        <span class="sep">|</span>
+        <a href="mailto:renoverdereciclagem@gmail.com" id="topbar-feedback">Dê feedback</a>
+      </div>
+      <div class="topbar-right">
+        <a href="https://www.facebook.com/profile.php?id=61560461456052" target="_blank" title="Facebook">f</a>
+        <a href="https://www.instagram.com/renoverdereciclagem/" target="_blank" title="Instagram">ig</a>
+        <a href="https://www.linkedin.com/company/103329920/" target="_blank" title="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="logo" href="#">
+        <div class="logo-icon">
+          <img src="img/Novo logo de RENOVERDE.png" alt="Renoverde Logo"
+            style="width:100%;height:100%;object-fit:contain;border-radius:8px;">
+        </div>
+        Renoverde
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" class="active" id="nav-home">Casa</a></li>
+        <li><a href="#about" id="nav-about">Sobre nós</a></li>
+        <li><a href="#services" id="nav-services">Serviços</a></li>
+        <li><a href="#products" id="nav-products">Produtos</a></li>
+        <li><a href="#launches" id="nav-launches">Lançamentos</a></li>
+        <li><a href="#blog" id="nav-blog">Blog</a></li>
+        <li><a href="#faq" id="nav-faq">FAQ</a></li>
+        <li><a href="#donations" id="nav-donations">Doações</a></li>
+        <li><a href="#schedule" class="nav-cta" id="nav-schedule">Agendar Recolha</a></li>
+      </ul>
+      <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag animate-fade-in" id="hero-tag">Infraestrutura para Economia Circular</div>
+        <h1 class="animate-fade-in delay-1" id="hero-title">Não recolhemos só lixo. Construímos a economia circular.
+        </h1>
+        <p class="animate-fade-in delay-2" id="hero-subtitle">A Renoverde transforma resíduos em valor — impulsionando
+          cidades mais limpas, empregos verdes e materiais sustentáveis na Guiné-Bissau.</p>
+        <div class="hero-btns animate-fade-in delay-3">
+          <a href="#schedule" class="btn-white" id="hero-cta">Começar</a>
+          <a href="#partners" class="btn-outline" id="hero-partner-btn">Torne-se Parceiro</a>
+        </div>
+        <div class="hero-stats stagger-animation">
+          <div class="stat-card">
+            <div class="num" id="stat-collected">500kg+</div>
+            <div class="lbl" id="stat-collected-label">Tons Coletados</div>
+          </div>
+          <div class="stat-card">
+            <div class="num" id="stat-jobs">2+</div>
+            <div class="lbl" id="stat-jobs-label">Empregos Criados</div>
+          </div>
+          <div class="stat-card">
+            <div class="num" id="stat-products">35+</div>
+            <div class="lbl" id="stat-products-label">Ecoblocos Produzidos</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card animate-on-scroll">
+          <div class="icon">🚛</div>
+          <h3>Recolha por Assinatura</h3>
+          <p>Assinatura mensal para casas e empresas com coleta digital e rastreável.</p>
+        </div>
+        <div class="hero-card animate-on-scroll">
+          <div class="icon">🧱</div>
+          <h3>Ecoblocos & Terrazzo</h3>
+          <p>Transformamos plástico e vidro em materiais resistentes e sustentáveis.</p>
+        </div>
+        <div class="hero-card animate-on-scroll">
+          <div class="icon">📱</div>
+          <h3>Plataforma Recolhe+</h3>
+          <p>Agende recolhas, pague e acompanhe impacto direto pelo app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO BAR -->
+  <div class="infobar">
+    <div class="infobar-inner">
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-text">
+          <h6>Telefone</h6>
+          <p>+(245) 956 262 289 / 955 937 178</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <h6>Localização</h6>
+          <p>Sitech e Safim, Bissau, Guiné-Bissau</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <h6>Horário</h6>
+          <p>Seg–Sex: 9h–22h · Sáb: 9h–12h · Dom: Fechado</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div class="info-text">
+          <h6>Email</h6>
+          <p>renoverdereciclagem@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="animate-on-scroll">
+          <div class="about-img">
+            <img src="img/IMG_8977.JPG" alt="Renoverde equipa" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <div class="about-text animate-on-scroll">
+          <div class="section-label" id="about-label">Sobre Nós</div>
+          <h2 class="section-title" id="about-title">Quem Somos</h2>
+          <p id="about-subtitle">A Renoverde é uma empresa líder em reciclagem de plástico em Guiné-Bissau, comprometida
+            com a sustentabilidade ambiental e o desenvolvimento comunitário.</p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="num">120+</div>
+              <div class="lbl" id="about-stat-recycled">Toneladas Recicladas</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">80+</div>
+              <div class="lbl" id="about-stat-products">Produtos Criados</div>
+            </div>
+            <div class="stat-card">
+              <div class="num">30+</div>
+              <div class="lbl" id="about-stat-jobs">Empregos Criados</div>
+            </div>
+          </div>
+          <div class="about-cards stagger-animation">
+            <div class="about-card">
+              <div class="about-card-icon">♻️</div>
+              <div>
+                <h5>Serviços Corporativos</h5>
+                <p>Gestão de resíduos segura e eco-responsável para empresas.</p>
+              </div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🚛</div>
+              <div>
+                <h5>Recolha Conveniente</h5>
+                <p>Recolha porta a porta de plásticos e outros materiais recicláveis.</p>
+              </div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">📅</div>
+              <div>
+                <h5>Eventos de Reciclagem</h5>
+                <p>Promovemos consciência ambiental nas comunidades locais.</p>
+              </div>
+            </div>
+            <div class="about-card">
+              <div class="about-card-icon">🌍</div>
+              <div>
+                <h5>Impacto Social</h5>
+                <p>Criamos empregos e melhoramos a qualidade de vida em Bissau.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-24">
+            <a href="#services" class="btn-link">Conhecer os Serviços</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-bg">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label" id="services-label">Um Sistema. Três Motores de Mudança.</div>
+        <h2 class="section-title" id="services-title">O que fazemos</h2>
+        <p class="section-sub" id="services-subtitle">Uma plataforma que integra coleta, produção e tecnologia para
+          fazer a economia circular acontecer.</p>
+      </div>
+      <div class="serv-grid stagger-animation" id="servicesList">
+        <div class="serv-card">
+          <div class="serv-card-img">
+            <img src="img\Preceiro Renoverde.png" alt="Coleta de Resíduos" onerror="this.style.background='#eaf5ee'">
+          </div>
+          <div class="serv-card-body">
+            <div class="serv-card-tag">Recolha</div>
+            <h4>Coleta por assinatura</h4>
+            <p>Assinatura para lares e empresas com recolha regular, digital e rastreável.</p>
+          </div>
+        </div>
+        <div class="serv-card">
+          <div class="serv-card-img">
+            <img src="img/sheet-press.jfif" alt="Ecoblocos e Terrazzo" onerror="this.style.background='#eaf5ee'">
+          </div>
+          <div class="serv-card-body">
+            <div class="serv-card-tag">Materiais</div>
+            <h4>Ecoblocos & Terrazzo</h4>
+            <p>Transformamos resíduos em elementos de construção duráveis e eco-friendly.</p>
+          </div>
+        </div>
+        <div class="serv-card">
+          <div class="serv-card-img">
+            <img src="img\Recolhe+.png" alt="Plataforma Digital" onerror="this.style.background='#eaf5ee'">
+          </div>
+          <div class="serv-card-body">
+            <div class="serv-card-tag">Plataforma</div>
+            <h4>Recolhe+</h4>
+            <p>Ferramenta digital para agendamento, pagamentos e dashboard de impacto.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-40">
+        <a href="#schedule" class="btn-link" id="services-cta">Comece Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Como Funciona</div>
+        <h2 class="section-title">Passo a passo do nosso processo</h2>
+        <p class="section-sub">Do cadastro até a transformação, cada etapa é projetada para gerar impacto sustentável.
+        </p>
+      </div>
+      <div class="step-grid stagger-animation">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4>Cadastre-se</h4>
+          <p>Registre sua empresa ou residência e escolha o plano ideal.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4>Receba a lixeira</h4>
+          <p>Receba o bin correto para separar os resíduos com facilidade.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4>Coletamos</h4>
+          <p>Nossa equipe recolhe no horário agendado com total transparência.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4>Separamos e processamos</h4>
+          <p>Os materiais são triados e tratados para produção de novos insumos.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <h4>Transformamos</h4>
+          <p>Resíduos viram ecoblocos, terrazzo e outros produtos úteis.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">6</div>
+          <h4>Você vê o impacto</h4>
+          <p>Acompanhe resultados no painel Recolhe+ e veja a diferença gerada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Transformando Resíduos em Oportunidades</div>
+        <h2 class="section-title">Impacto Mensurável</h2>
+        <p class="section-sub">Métricas que mostram como a Renoverde converte resíduos em valor para pessoas, empresas e
+          cidades.
+        </p>
+      </div>
+      <div class="impact-grid stagger-animation">
+        <div class="impact-card">
+          <div class="num">+0,50</div>
+          <h5>Tons Coletadas</h5>
+        </div>
+        <div class="impact-card">
+          <div class="num">+3</div>
+          <h5>Empregos Criados</h5>
+        </div>
+        <div class="impact-card">
+          <div class="num">+30</div>
+          <h5>Ecoblocos Produzidos</h5>
+        </div>
+        <div class="impact-card">
+          <div class="num">1%</div>
+          <h5>CO₂ Reduzido</h5>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GALLERY -->
+  <section id="gallery">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Galeria de Produtos</div>
+        <h2 class="section-title">Ecoblocos & Terrazzo</h2>
+        <p class="section-sub">Veja os materiais que produzimos a partir de resíduos reciclados.</p>
+      </div>
+      <div class="gallery-grid stagger-animation">
+        <div class="gallery-item"><img src="img\Eco-blocos.png" alt="Ecoblocos"
+            onerror="this.style.background='#eaf5ee'"></div>
+        <div class="gallery-item"><img src="img\terrazzo.png" alt="Terrazzo" onerror="this.style.background='#eaf5ee'">
+        </div>
+        <div class="gallery-item"><img src="img\sheet from plastikc.jfif" alt="Produtos"
+            onerror="this.style.background='#eaf5ee'"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Produtos</div>
+        <h2 class="section-title">Nossa Linha de Produtos Sustentáveis</h2>
+        <p class="section-sub">Explore os produtos desenvolvidos a partir do plástico reciclado e outros materiais
+          reutilizados.</p>
+      </div>
+      <div class="product-grid stagger-animation" id="productList"></div>
+    </div>
+  </section>
+
+  <!-- LAUNCHES -->
+  <section id="launches" class="services-bg">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Lançamentos</div>
+        <h2 class="section-title">Novas Iniciativas & Produtos</h2>
+        <p class="section-sub">Acompanhe os lançamentos recentes e fique por dentro das novidades da Renoverde.</p>
+      </div>
+      <div class="launch-grid stagger-animation" id="launchList"></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="services-bg">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Modelo de Preços</div>
+        <h2 class="section-title">Simples e transparente</h2>
+        <p class="section-sub">Planos claros para famílias e organizações, com opções de coleta premium.</p>
+      </div>
+      <div class="pricing-grid stagger-animation">
+        <div class="pricing-card">
+          <h4>Residências</h4>
+          <p class="price">5.000 CFA / Assinatura e 10.000 CFA por mês</p>
+          <ul>
+            <li>Recolha semanal</li>
+            <li>Rastreamento digital</li>
+            <li>Relatórios de impacto</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h4>Organizações</h4>
+          <p class="price">10.000 CFA / Assinatura e 18.000 CFA por mês</p>
+          <ul>
+            <li>Coletas personalizadas</li>
+            <li>Gestão de resíduos corporativos</li>
+            <li>Suporte prioritário</li>
+          </ul>
+        </div>
+        <div class="pricing-card">
+          <h4>Extras</h4>
+          <p class="price">Opcional</p>
+          <ul>
+            <li>Taxa de lixeira</li>
+            <li>Coletas premium</li>
+            <li>Pagamentos via Orange Money / TeleTaku</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <div class="section-inner">
+      <div class="mission-grid">
+        <div class="mission-visual animate-on-scroll">
+          <img src="img/IMG_8977.JPG" alt="Nossa Missão" onerror="this.style.display='none'">
+        </div>
+        <div class="mission-content animate-on-scroll">
+          <div class="section-label" id="mission-label">Nossa Missão</div>
+          <h2 class="section-title" id="mission-title">Por Que Existimos</h2>
+          <p class="section-sub" id="mission-subtitle">Nossa missão é combater a poluição em Guiné-Bissau através da
+            reciclagem inovadora e educação ambiental.</p>
+          <div class="stagger-animation">
+            <div class="accordion-item">
+              <button class="accordion-head open" onclick="toggleAccordion(this)">
+                <span id="mission-vision-title">Visão</span> <span class="accordion-arrow">▲</span>
+              </button>
+              <div class="accordion-body open">
+                <span id="mission-vision-content">Ser a empresa líder em reciclagem e recolha sustentável na África
+                  Ocidental, criando um futuro sem lixo descartado.</span>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head" onclick="toggleAccordion(this)">
+                <span id="mission-values-title">Valores</span> <span class="accordion-arrow">▼</span>
+              </button>
+              <div class="accordion-body">
+                <span id="mission-values-content">Sustentabilidade, Inovação, Transparência e Desenvolvimento
+                  Comunitário guiam todas as nossas ações.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DONATIONS -->
+  <section id="donations">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label" id="donations-label">Apoie Nossos Projetos</div>
+        <h2 class="section-title" id="donations-title">Doações & Projetos em Andamento</h2>
+        <p class="section-sub" id="donations-subtitle">Ajude-nos a transformar vidas e comunidades através de projetos
+          sociais e ambientais.</p>
+      </div>
+      <div class="donations-grid stagger-animation">
+        <div class="donation-card">
+          <div class="donation-icon">♻️</div>
+          <h4>Goods for Plastics</h4>
+          <p>Programa de troca de plásticos por bens essenciais nas comunidades carentes de Bissau.</p>
+          <div class="donation-meta">
+            <span class="status">Em Andamento</span>
+            <a href="#" class="btn-donate">Contribuir</a>
+          </div>
+        </div>
+        <div class="donation-card">
+          <div class="donation-icon">🎓</div>
+          <h4>Renoverde nas Escolas</h4>
+          <p>Educação ambiental e reciclagem nas escolas primárias e secundárias da Guiné-Bissau.</p>
+          <div class="donation-meta">
+            <span class="status">Em Andamento</span>
+            <a href="#" class="btn-donate">Contribuir</a>
+          </div>
+        </div>
+        <div class="donation-card">
+          <div class="donation-icon">🌍</div>
+          <h4>Terra Limpa, Rios Limpos</h4>
+          <p>Limpeza de rios e espaços públicos, removendo plásticos e invertendo poluição ambiental.</p>
+          <div class="donation-meta">
+            <span class="status">Em Andamento</span>
+            <a href="#" class="btn-donate">Contribuir</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="schedule-bg">
+    <div class="section-inner">
+      <div class="text-center">
+        <div class="section-label" style="color:rgba(255,255,255,.7)" id="schedule-form-label">Agenda Fácil</div>
+        <h2 class="section-title" id="schedule-form-title">Agende a Recolha</h2>
+        <p style="color:rgba(255,255,255,.7);max-width:480px;margin:0 auto" id="schedule-form-subtitle">Preencha o
+          formulário abaixo e entraremos em contacto para confirmar o seu agendamento.</p>
+        <p style="color:rgba(255,255,255,.8);max-width:480px;margin:12px auto 0;font-size:14px">É um novo cliente?
+          Registe-se
+          rapidamente aqui: <a href="https://forms.gle/oJjLqgGKCthN1dpQ9" target="_blank"
+            style="color:#fff;text-decoration:underline;font-weight:600">Formulário de Registo</a></p>
+      </div>
+      <div class="sched-form">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label id="form-name-label">Nome Completo</label>
+              <input type="text" name="nome" placeholder="Ex: João da Silva" required id="form-name">
+            </div>
+            <div class="form-field">
+              <label id="form-email-label">Email</label>
+              <input type="email" name="email" placeholder="seu@email.com" required id="form-email">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label id="form-phone-label">Número de Telefone</label>
+              <input type="tel" name="telefone" placeholder="+(245) 9X XXX XX XX" required id="form-phone">
+            </div>
+            <div class="form-field">
+              <label id="form-date-label">Data Preferida</label>
+              <input type="date" name="data" required id="form-date">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label id="form-time-label">Horário Preferido</label>
+              <select name="horario" required id="form-time">
+                <option value="" id="form-time-placeholder">Selecione um horário</option>
+                <option id="form-time-1">09h00 – 11h00</option>
+                <option id="form-time-2">11h00 – 13h00</option>
+                <option id="form-time-3">14h00 – 16h00</option>
+                <option id="form-time-4">16h00 – 18h00</option>
+                <option id="form-time-5">18h00 – 20h00</option>
+                <option id="form-time-6">20h00 – 22h00</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label id="form-waste-label">Tipo de Resíduo</label>
+              <select name="tipo_residuo" required id="waste-type">
+                <option value="" id="form-waste-placeholder">Selecione o tipo de resíduo</option>
+                <option value="plastic" id="form-waste-plastic">Plástico</option>
+                <option value="electronic" id="form-waste-electronic">Eletrónicos (e-waste)</option>
+                <option value="metal" id="form-waste-metal">Metais</option>
+                <option value="paper" id="form-waste-paper">Papel e Cartão</option>
+                <option value="other" id="form-waste-mixed">Misto / Outros</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label id="form-message-label">Mensagem adicional (opcional)</label>
+            <textarea name="mensagem"
+              placeholder="Descreva a quantidade aproximada, localização ou outras informações relevantes..."
+              id="form-message"></textarea>
+          </div>
+          <button type="submit" class="btn-green" id="form-submit">📅 Confirmar Agendamento</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADMIN ADD CONTENT -->
+  <section id="admin-content">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Gestão de Conteúdo</div>
+        <h2 class="section-title">Produtos e Lançamentos</h2>
+        <p class="section-sub">A gestão de produtos e lançamentos está disponível no painel administrativo.</p>
+      </div>
+      <div class="content-summary">
+        <p style="text-align:center; max-width:720px; margin:0 auto; color:var(--gray);">Para criar ou editar produtos e
+          lançamentos, acesse o painel de administração em <a href="admin.html"
+            style="color:var(--green); text-decoration:none; font-weight:600;">admin.html</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label" id="faq-label">Dúvidas Comuns</div>
+        <h2 class="section-title" id="faq-title">Perguntas Frequentes</h2>
+        <p class="section-sub" id="faq-subtitle">Encontre respostas para as perguntas mais frequentes sobre nossos
+          serviços de reciclagem.</p>
+      </div>
+      <div class="faq-grid stagger-animation" id="faqList">
+        <div class="faq-card">
+          <div class="q-icon">?</div>
+          <h5 id="faq-question-1">O que é a Renoverde?</h5>
+          <p id="faq-answer-1">A Renoverde é uma empresa social guineense que atua na recolha e reciclagem de resíduos
+            plásticos e eletrónicos, desenvolvendo soluções que reduzem o impacto ambiental e promovem a
+            sustentabilidade em comunidades e empresas.</p>
+        </div>
+        <div class="faq-card">
+          <div class="q-icon">?</div>
+          <h5 id="faq-question-2">Como posso colaborar com a Renoverde?</h5>
+          <p id="faq-answer-2">Pode colaborar doando resíduos para reciclagem, participando dos nossos programas de
+            voluntariado, contratando os nossos serviços para a sua empresa, ou contribuindo financeiramente para apoiar
+            os nossos projetos sociais.</p>
+        </div>
+        <div class="faq-card">
+          <div class="q-icon">?</div>
+          <h5 id="faq-question-3">Quais materiais vocês reciclam?</h5>
+          <p id="faq-answer-3">Reciclamos principalmente plásticos e eletrônicos, mas também trabalhamos com metais,
+            papel e outros materiais. Estamos constantemente expandindo as nossas capacidades para incluir mais tipos de
+            resíduos.</p>
+        </div>
+        <div class="faq-card">
+          <div class="q-icon">?</div>
+          <h5 id="faq-question-4">Que tipo de resíduos a Renoverde aceita?</h5>
+          <p id="faq-answer-4">A Renoverde aceita todos os tipos de resíduos recicláveis, com foco especial em plásticos
+            e vidro. Trabalhamos para receber e processar materiais de forma segura, ajudando a transformar lixo em
+            novos produtos sustentáveis.</p>
+        </div>
+      </div>
+      <div class="flex-center mt-40">
+        <a href="#" class="btn-link-outline animate-on-scroll" id="faq-view-all">Ver Todas as Perguntas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="testim-bg">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Construtores do Novo Sistema</div>
+        <h2 class="section-title">Nossa Equipa</h2>
+        <p class="section-sub">Fundadores e operações reunidos para escalar a economia circular na Guiné-Bissau.</p>
+      </div>
+      <div class="team-grid stagger-animation" id="teamList">
+        <div class="team-card">
+          <div class="team-avatar">CE</div>
+          <h4>Chinoza Eze</h4>
+          <p>Fundador E CEO</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">EC</div>
+          <h4>Edineusa Cá</h4>
+          <p>Operações E CO-fundadora</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section id="partners">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label">Junte-se ao Movimento</div>
+        <h2 class="section-title">Parcerias</h2>
+        <p class="section-sub">Negócios, ONGs, governos e investidores unidos para construir infraestrutura circular.
+        </p>
+      </div>
+      <div class="partners-grid stagger-animation">
+        <div class="partner-card">Negócios</div>
+        <div class="partner-card">ONGs</div>
+        <div class="partner-card">Governo</div>
+        <div class="partner-card">Investidores</div>
+      </div>
+      <div class="text-center mt-40">
+        <a href="#contact-bar" class="btn-link" id="partner-cta">Torne-se um Parceiro</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog">
+    <div class="section-inner">
+      <div class="text-center animate-on-scroll">
+        <div class="section-label" id="blog-label">Postagens no Blog</div>
+        <h2 class="section-title" id="blog-title">Últimas Notícias</h2>
+        <p class="section-sub" id="blog-subtitle">Leia conteúdos sobre sustentabilidade, reciclagem e iniciativas da
+          Renoverde.</p>
+      </div>
+      <div class="blog-grid stagger-animation" id="blogList">
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="img/15928266043_b.jpg" alt="Blog post 1" onerror="this.style.background='#eaf5ee'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Sustentabilidade</div>
+            <h5>Como a reciclagem de resíduos está mudando o futuro da Guiné-Bissau</h5>
+            <p>Descubra como a Renoverde está transformando a gestão de resíduos no país, contribuindo para um ambiente
+              mais limpo e sustentável...</p>
+            <div class="blog-meta">
+              <span>👤 Andissiane T. Cá</span>
+              <span>📅 28 Jul 2024</span>
+            </div>
+            <div class="mt-16"><a href="#" class="read-more">Leia Mais →</a></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="img/plastic.jfif" alt="Blog post 2" onerror="this.style.background='#eaf5ee'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Eco-Friendly</div>
+            <h5>5 maneiras de reduzir o uso de plástico no seu dia a dia</h5>
+            <p>Pequenas mudanças podem fazer uma grande diferença. Aprenda como reduzir o uso de plástico e adotar
+              práticas mais sustentáveis...</p>
+            <div class="blog-meta">
+              <span>👤 Janna Barbosa</span>
+              <span>📅 25 Jul 2024</span>
+            </div>
+            <div class="mt-16"><a href="#" class="read-more">Leia Mais →</a></div>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-img">
+            <img src="img/Copy of Mighty Trug-Elzing.png" alt="Blog post 3" onerror="this.style.background='#eaf5ee'">
+          </div>
+          <div class="blog-body">
+            <div class="blog-tag">Inovação Verde</div>
+            <h5>A importância da inovação no setor de reciclagem</h5>
+            <p>O futuro da reciclagem depende da inovação. Veja como a tecnologia está ajudando a Renoverde a enfrentar
+              os desafios ambientais...</p>
+            <div class="blog-meta">
+              <span>👤 Carlos Lima</span>
+              <span>📅 29 Jul 2024</span>
+            </div>
+            <div class="mt-16"><a href="#" class="read-more">Leia Mais →</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-center mt-40">
+        <a href="#" class="btn-link-outline animate-on-scroll" id="blog-view-all">Ver Todos os Artigos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BAR -->
+  <div class="contact-bar" id="contact-bar">
+    <div class="contact-inner animate-on-scroll">
+      <div>
+        <h4 id="contact-bar-title">Fique por dentro das nossas novidades</h4>
+        <p id="contact-bar-subtitle">Subscreva e receba atualizações sobre reciclagem e sustentabilidade na
+          Guiné-Bissau. Novo cliente? <a href="https://forms.gle/oJjLqgGKCthN1dpQ9" target="_blank"
+            style="color:var(--green);font-weight:600">Registe-se aqui</a>.</p>
+      </div>
+      <div class="contact-inner" style="gap:16px;justify-content:flex-end;flex:1;flex-wrap:wrap">
+        <div>
+          <div style="color:rgba(255,255,255,.6);font-size:13px;margin-bottom:4px" id="contact-phone">📞 +(245) 956 262
+            289 / 966 102 439</div>
+          <div style="color:rgba(255,255,255,.6);font-size:13px" id="contact-email">✉️ renoverdereciclagem@gmail.com
+          </div>
+        </div>
+        <div class="email-input-row">
+          <form id="newsletterForm" style="display: flex; gap: 8px;">
+            <input type="email" name="email" placeholder="O seu endereço de email" required style="flex: 1;"
+              id="newsletter-email">
+            <button type="submit" id="newsletter-submit">Subscrever</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1932.4545629547088!2d-15.597670283830493!3d11.881619620688929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x100b6a7b2177b1db%3A0x2523eb2f0db3e987!2sRenoverde%20%20Bissau!5e0!3m2!1spt-BR!2sgw!4v1680658898898"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner animate-on-scroll">
+      <div class="footer-brand">
+        <a class="logo" href="#">
+          <div class="logo-icon"><img src="img/Novo logo de RENOVERDE.png" alt="Renoverde Logo"
+              style="width:100%;height:100%;object-fit:contain;border-radius:8px;"></div>
+          Renoverde
+        </a>
+        <p id="footer-description">Empresa social guineense de recolhe, tratamento e reciclagem dedicada à transformação
+          de resíduos em materiais reutilizáveis e aumento de consciência ambiental na Guiné-Bissau .</p>
+        <div class="footer-contact">
+          <a href="#" id="footer-address">📍 Sitech e Safim, Bissau, Guiné-Bissau</a>
+          <a href="tel:+245956262289" id="footer-phone-1">📞 +(245) 956 262 289</a>
+          <a href="tel:+245955937178" id="footer-phone-2">📞 +(245) 955 937 178</a>
+          <a href="mailto:renoverdereciclagem@gmail.com" id="footer-email">✉️ renoverdereciclagem@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 id="footer-nav-title">Navegação</h5>
+        <ul>
+          <li><a href="#" id="footer-nav-home">Casa</a></li>
+          <li><a href="#about" id="footer-nav-about">Sobre nós</a></li>
+          <li><a href="#services" id="footer-nav-services">Serviços</a></li>
+          <li><a href="#mission" id="footer-nav-mission">Missão</a></li>
+          <li><a href="blog.html" id="footer-nav-blog">Blog</a></li>
+          <li><a href="#faq" id="footer-nav-faq">FAQ</a></li>
+          <li><a href="contact.html" id="footer-nav-contact">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 id="footer-services-title">Serviços</h5>
+        <ul>
+          <li><a href="#services" id="footer-service-collection">Recolha de Resíduos</a></li>
+          <li><a href="#services" id="footer-service-recycling">Reciclagem de Plástico</a></li>
+          <li><a href="#services" id="footer-service-ewaste">E-waste / Eletrónicos</a></li>
+          <li><a href="#services" id="footer-service-data">Destruição de Dados</a></li>
+          <li><a href="#services" id="footer-service-corporate">Serviços Corporativos</a></li>
+          <li><a href="#services" id="footer-service-events">Eventos de Reciclagem</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-news">
+        <h5 id="footer-news-title">Notícias Recentes</h5>
+        <div class="item">
+          <p id="footer-news-1">Renoverde lança nova linha de produtos ecológicos a partir de plástico reciclado</p>
+          <span id="footer-news-1-date">20 de Abril de 2025</span>
+        </div>
+        <div class="item">
+          <p id="footer-news-2">Parceria com ONGs locais para promover a reciclagem nas escolas da Guiné-Bissau</p>
+          <span id="footer-news-2-date">22 de Setembro de 2024</span>
+        </div>
+        <div class="item">
+          <p id="footer-news-3">Expansão para as regiões começa com sucesso</p>
+          <span id="footer-news-3-date">26 de Setembro de 2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-copyright">© 2026 Renoverde. Todos os Direitos Reservados.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/profile.php?id=61560461456052" target="_blank" class="social-btn"
+          title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/renoverdereciclagem/" target="_blank" class="social-btn" title="Instagram"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/103329920/" target="_blank" class="social-btn" title="LinkedIn"><i
+            class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleAccordion(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.accordion-head').forEach(h => { h.classList.remove('open'); h.querySelector('.accordion-arrow').textContent = '▼' });
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      if (!isOpen) { btn.classList.add('open'); btn.querySelector('.accordion-arrow').textContent = '▲'; body.classList.add('open') }
+    }
+
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function () {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animate-on-scroll class
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    });
+  </script>
+  <script>
+    // Supabase client config injected for client-side form submissions
+    window.SUPABASE_URL = "https://cgirjoebsloojtfokqec.supabase.co";
+    window.SUPABASE_KEY = "sb_publishable_lFjBVWrbjvGer8rtOckWhA_XzxOKkOY";
+  </script>
+  <script src="app.js"></script>
+</body>
+
+</html>
